@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Description\paw1.png" />
+    <None Remove="Description\paw2.png" />
+    <None Remove="Learn\learn_img\agar.png" />
+    <None Remove="Learn\learn_img\dog_house.png" />
+    <None Remove="Learn\learn_img\erdelyi_kopo.png" />
+    <None Remove="Learn\learn_img\francia_bulldog.png" />
+    <None Remove="Learn\learn_img\komondor.png" />
+    <None Remove="Learn\learn_img\kuvasz.png" />
+    <None Remove="Learn\learn_img\mudi.png" />
+    <None Remove="Learn\learn_img\nemet_juhasz.png" />
+    <None Remove="Learn\learn_img\park.jpg" />
+    <None Remove="Learn\learn_img\puli.png" />
+    <None Remove="Learn\learn_img\pumi.png" />
+    <None Remove="Learn\learn_img\rottweiler.png" />
+    <None Remove="Learn\learn_img\vizsla.png" />
+    <None Remove="Login_Register\paws.jpg" />
+    <None Remove="Main\KezdoKep.png" />
+    <None Remove="Navigation\Nav.png" />
+    <None Remove="Notes\notes.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Game\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Description\paw1.png" />
+    <Resource Include="Description\paw2.png" />
+    <Resource Include="Learn\learn_img\agar.png" />
+    <Resource Include="Learn\learn_img\dog_house.png" />
+    <Resource Include="Learn\learn_img\erdelyi_kopo.png" />
+    <Resource Include="Learn\learn_img\francia_bulldog.png" />
+    <Resource Include="Learn\learn_img\komondor.png" />
+    <Resource Include="Learn\learn_img\kuvasz.png" />
+    <Resource Include="Learn\learn_img\mudi.png" />
+    <Resource Include="Learn\learn_img\nemet_juhasz.png" />
+    <Resource Include="Learn\learn_img\park.jpg" />
+    <Resource Include="Learn\learn_img\puli.png" />
+    <Resource Include="Learn\learn_img\pumi.png" />
+    <Resource Include="Learn\learn_img\rottweiler.png" />
+    <Resource Include="Learn\learn_img\vizsla.png" />
+    <Resource Include="Login_Register\paws.jpg" />
+    <Resource Include="Main\KezdoKep.png" />
+    <Resource Include="Navigation\Nav.png" />
+    <Resource Include="Notes\notes.png" />
+  </ItemGroup>
+
+</Project>
