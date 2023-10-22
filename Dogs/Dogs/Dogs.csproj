@@ -27,6 +27,21 @@
     <None Remove="Main\KezdoKep.png" />
     <None Remove="Navigation\Nav.png" />
     <None Remove="Notes\notes.png" />
+    <None Remove="WallOfGlory\images\GY_agar.jpg" />
+    <None Remove="WallOfGlory\images\GY_erdelyi_kopo.jpg" />
+    <None Remove="WallOfGlory\images\GY_francia_bulldog.jpg" />
+    <None Remove="WallOfGlory\images\GY_komondor.jpg" />
+    <None Remove="WallOfGlory\images\GY_kuvasz.jpg" />
+    <None Remove="WallOfGlory\images\GY_mudi.jpg" />
+    <None Remove="WallOfGlory\images\GY_nemet_juhasz.jpg" />
+    <None Remove="WallOfGlory\images\GY_puli.jpg" />
+    <None Remove="WallOfGlory\images\GY_pumi.jpg" />
+    <None Remove="WallOfGlory\images\GY_rottweiler.jpg" />
+    <None Remove="WallOfGlory\images\GY_vizsla.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WallOfGlory\images\GY_mudi.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +68,16 @@
     <Resource Include="Main\KezdoKep.png" />
     <Resource Include="Navigation\Nav.png" />
     <Resource Include="Notes\notes.png" />
+    <Resource Include="WallOfGlory\images\GY_agar.jpg" />
+    <Resource Include="WallOfGlory\images\GY_erdelyi_kopo.jpg" />
+    <Resource Include="WallOfGlory\images\GY_francia_bulldog.jpg" />
+    <Resource Include="WallOfGlory\images\GY_komondor.jpg" />
+    <Resource Include="WallOfGlory\images\GY_kuvasz.jpg" />
+    <Resource Include="WallOfGlory\images\GY_nemet_juhasz.jpg" />
+    <Resource Include="WallOfGlory\images\GY_puli.jpg" />
+    <Resource Include="WallOfGlory\images\GY_pumi.jpg" />
+    <Resource Include="WallOfGlory\images\GY_rottweiler.jpg" />
+    <Resource Include="WallOfGlory\images\GY_vizsla.jpg" />
   </ItemGroup>
 
 </Project>

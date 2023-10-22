@@ -34,12 +34,34 @@
 			</Button.Resources>
 		</Button>
 		<Viewbox Grid.Column="3">
-			<TextBlock>Pontjaid:  "Pont" </TextBlock>
+			<TextBlock x:Name="points">Pontjaid:  "Pont" </TextBlock>
 		</Viewbox>
 		<Button x:Name="BackToLearn" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="10" Click="BackToLearn_Click">
 			<Viewbox>
 				<TextBlock TextAlignment="Center">Tanuló<LineBreak/>oldalra vissza</TextBlock>
 			</Viewbox>
 		</Button>
+		<Image Grid.Row="1" Grid.Column="1" Source="images/GY_agar.jpg" Visibility="Hidden" x:Name="agar" Stretch="Fill"/>
+
+		<Image Grid.Row="1" Grid.Column="2" Source="images/GY_erdelyi_kopo.jpg" Visibility="Hidden" x:Name="kopo" Stretch="Fill"/>
+
+		<Image  Grid.Row="1" Grid.Column="3" Source="images/GY_francia_bulldog.jpg" Visibility="Hidden" x:Name="bulldog" Stretch="Fill"/>
+
+		<Image Grid.Row="2" Source="images/GY_komondor.jpg" Visibility="Hidden" x:Name="komondor" Stretch="Fill"/>
+
+		<Image  Grid.Row="2" Grid.Column="1" Source="images/GY_kuvasz.jpg" Visibility="Hidden" x:Name="kuvasz" Stretch="Fill"/>
+
+		<Image Grid.Row="2" Grid.Column="2" Source="images/GY_mudi.jpg" Visibility="Hidden" x:Name="mudi" Stretch="Fill"/>
+
+		<Image Grid.Row="2" Grid.Column="3" Source="images/GY_nemet_juhasz.jpg" Visibility="Hidden" x:Name="njuhasz" Stretch="Fill"/>
+
+		<Image  Grid.Row="3" Source="images/GY_puli.jpg" Visibility="Hidden" x:Name="puli" Stretch="Fill"/>
+
+		<Image Grid.Row="3" Grid.Column="1" Source="images/GY_pumi.jpg" Visibility="Hidden" x:Name="pumi" Stretch="Fill"/>
+
+		<Image Grid.Row="3" Grid.Column="2" Source="images/GY_rottweiler.jpg" Visibility="Hidden" x:Name="roti" Stretch="Fill"/>
+
+		<Image Grid.Row="3" Grid.Column="3" Source="images/GY_vizsla.jpg" Visibility="Hidden" x:Name="vizsla" Stretch="Fill"/>
+
 	</Grid>
 </Page>
