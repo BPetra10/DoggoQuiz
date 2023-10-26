@@ -43,7 +43,7 @@
 		<Button x:Name="NemetJuhasz" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Click="NemetJuhasz_Click">
 			<Button.Template>
 				<ControlTemplate>
-					<Image Source="learn_img/nemet_juhasz.png"></Image>
+					<Image Source="learn_img/nemetjuhasz.png"></Image>
 				</ControlTemplate>
 			</Button.Template>
 		</Button>

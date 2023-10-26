@@ -53,7 +53,7 @@
 
 		<Image Grid.Row="2" Grid.Column="2" Source="images/GY_mudi.jpg" Visibility="Hidden" x:Name="mudi" Stretch="Fill"/>
 
-		<Image Grid.Row="2" Grid.Column="3" Source="images/GY_nemet_juhasz.jpg" Visibility="Hidden" x:Name="njuhasz" Stretch="Fill"/>
+		<Image Grid.Row="2" Grid.Column="3" Source="images/GY_nemetjuhasz.jpg" Visibility="Hidden" x:Name="njuhasz" Stretch="Fill"/>
 
 		<Image  Grid.Row="3" Source="images/GY_puli.jpg" Visibility="Hidden" x:Name="puli" Stretch="Fill"/>
 
