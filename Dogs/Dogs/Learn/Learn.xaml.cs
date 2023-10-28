@@ -25,8 +25,10 @@ namespace Dogs.Learn
             InitializeComponent();
         }
 
-        private void ToNotePage() {
-            Page notes = new Notes.Notes();
+        private void ToNotePage(string Dogname)
+        {  
+            var notes = new Notes.Notes();
+            notes.dogName.Text = Dogname;
             Application.Current.MainWindow.Content = notes;
         }
 
@@ -38,57 +40,58 @@ namespace Dogs.Learn
 
         private void Komondor_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Komondor");
         }
 
         private void Agar_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Agár");
         }
 
         private void NemetJuhasz_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Németjuhász");
         }
 
         private void FranciaBulldog_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Francia bulldog");
         }
 
         private void Kuvasz_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Kuvasz");
         }
 
         private void Puli_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Puli");
         }
 
         private void ErdelyiKopo_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Erdelyi kopó");
         }
 
         private void Mudi_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Mudi");
         }
 
         private void Rottweiler_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Rottweiler");
         }
 
         private void Pumi_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Pumi");
+
         }
 
         private void Vizsla_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage();
+            ToNotePage("Vizsla");
         }
     }
 }

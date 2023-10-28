@@ -17,7 +17,7 @@
     <None Remove="Learn\learn_img\komondor.png" />
     <None Remove="Learn\learn_img\kuvasz.png" />
     <None Remove="Learn\learn_img\mudi.png" />
-    <None Remove="Learn\learn_img\nemet_juhasz.png" />
+    <None Remove="Learn\learn_img\nemetjuhasz.png" />
     <None Remove="Learn\learn_img\park.jpg" />
     <None Remove="Learn\learn_img\puli.png" />
     <None Remove="Learn\learn_img\pumi.png" />
@@ -33,7 +33,7 @@
     <None Remove="WallOfGlory\images\GY_komondor.jpg" />
     <None Remove="WallOfGlory\images\GY_kuvasz.jpg" />
     <None Remove="WallOfGlory\images\GY_mudi.jpg" />
-    <None Remove="WallOfGlory\images\GY_nemet_juhasz.jpg" />
+    <None Remove="WallOfGlory\images\GY_nemetjuhasz.jpg" />
     <None Remove="WallOfGlory\images\GY_puli.jpg" />
     <None Remove="WallOfGlory\images\GY_pumi.jpg" />
     <None Remove="WallOfGlory\images\GY_rottweiler.jpg" />
@@ -58,7 +58,7 @@
     <Resource Include="Learn\learn_img\komondor.png" />
     <Resource Include="Learn\learn_img\kuvasz.png" />
     <Resource Include="Learn\learn_img\mudi.png" />
-    <Resource Include="Learn\learn_img\nemet_juhasz.png" />
+    <Resource Include="Learn\learn_img\nemetjuhasz.png" />
     <Resource Include="Learn\learn_img\park.jpg" />
     <Resource Include="Learn\learn_img\puli.png" />
     <Resource Include="Learn\learn_img\pumi.png" />
@@ -73,7 +73,7 @@
     <Resource Include="WallOfGlory\images\GY_francia_bulldog.jpg" />
     <Resource Include="WallOfGlory\images\GY_komondor.jpg" />
     <Resource Include="WallOfGlory\images\GY_kuvasz.jpg" />
-    <Resource Include="WallOfGlory\images\GY_nemet_juhasz.jpg" />
+    <Resource Include="WallOfGlory\images\GY_nemetjuhasz.jpg" />
     <Resource Include="WallOfGlory\images\GY_puli.jpg" />
     <Resource Include="WallOfGlory\images\GY_pumi.jpg" />
     <Resource Include="WallOfGlory\images\GY_rottweiler.jpg" />

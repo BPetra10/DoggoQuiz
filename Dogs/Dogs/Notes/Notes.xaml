@@ -9,9 +9,9 @@
       Title="Notes">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="5*"/>
-			<RowDefinition Height="26*"/>
-			<RowDefinition Height="3*"/>
+			<RowDefinition Height="6*"/>
+			<RowDefinition Height="24*"/>
+			<RowDefinition Height="4*"/>
 			<RowDefinition Height="23*"/>
 			<RowDefinition Height="3*"/>
 			<RowDefinition Height="24*"/>
@@ -22,19 +22,18 @@
 			<ColumnDefinition Width="36*"/>
 			<ColumnDefinition Width="31*"/>
 			<ColumnDefinition Width="9*"/>
-			<ColumnDefinition Width="31*"/>
-			<ColumnDefinition Width="8*"/>
+			<ColumnDefinition Width="30*"/>
+			<ColumnDefinition Width="9*"/>
 			<ColumnDefinition Width="31*"/>
 			<ColumnDefinition Width="9*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.Background>
 			<ImageBrush ImageSource="notes.png" Stretch="Fill"/>
 		</Grid.Background>
-		<Button x:Name="BackToMain" Grid.Row="1" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="10,10,20,10" Click="BackToMain_Click">
-			<Viewbox>
-				<TextBlock>Főmenübe</TextBlock>
-			</Viewbox>
-		</Button>
+
+		<Viewbox Grid.Row="1" Grid.Column="1" Margin="10,0,20,0">
+			<TextBlock x:Name="dogName"></TextBlock>
+		</Viewbox>
 		<Button x:Name="BackToLearning" Grid.Row="3" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="10,10,20,10" Click="BackToLearning_Click">
 			<Viewbox>
 				<TextBlock>Tanuló <LineBreak/> oldalra</TextBlock>
@@ -46,8 +45,39 @@
 			</Viewbox>
 		</Button>
 		<Viewbox Grid.Row="1" Grid.Column="2">
-			<TextBlock MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
-				A rómaiak terelő- és pásztorkutyaként tartották a mai rottweiler őseit. Így a világ egyik legrégebbi kutyafajtájának számít. A késő középkorban terjedt el a tartása, melyet napjainkban legfőképp szolgálati kutyaként használnak.
+			<TextBlock x:Name="tb1" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="1" Grid.Column="4">
+			<TextBlock x:Name="tb2" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="1" Grid.Column="6">
+			<TextBlock x:Name="tb3" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="3" Grid.Column="2">
+			<TextBlock x:Name="tb4" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="3" Grid.Column="4">
+			<TextBlock x:Name="tb5" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="3" Grid.Column="6">
+			<TextBlock x:Name="tb6" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="5" Grid.Column="2">
+			<TextBlock x:Name="tb7" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="5" Grid.Column="4">
+			<TextBlock x:Name="tb8" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
+			</TextBlock>
+		</Viewbox>
+		<Viewbox Grid.Row="5" Grid.Column="6">
+			<TextBlock x:Name="tb9" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">
 			</TextBlock>
 		</Viewbox>
 	</Grid>
