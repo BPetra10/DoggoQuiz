@@ -27,7 +27,7 @@
 			<TextBlock>Regisztráció</TextBlock>
 		</Viewbox>
 		<Viewbox Grid.Row="1" Grid.ColumnSpan="3">
-			<TextBlock Foreground="Red">Hibaüzi, ha van!</TextBlock>
+			<TextBlock Foreground="Red" x:Name="errorMsg">Hibaüzi, ha van!</TextBlock>
 		</Viewbox>
 		<Grid Background="Bisque" Grid.Column="1" Grid.Row="2">
 			<Grid.ColumnDefinitions>
@@ -44,15 +44,15 @@
 			<Viewbox>
 				<Label>Felhasználónév:</Label>
 			</Viewbox>
-			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" Margin="10,0,20,0"></TextBox>
+			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></TextBox>
 			<Viewbox Grid.Row="1">
 				<Label>Jelszó:</Label>
 			</Viewbox>
-			<TextBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" Margin="10,0,20,0"></TextBox>
+			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></PasswordBox>
 			<Viewbox Grid.Row="2">
 				<Label>Jelszó újra:</Label>
 			</Viewbox>
-			<TextBox x:Name="password2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" Margin="10,0,20,0"></TextBox>
+			<PasswordBox x:Name="password2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></PasswordBox>
 			<Button x:Name="SignUp" Grid.Row="3" Grid.ColumnSpan="3" Margin="10" Click="SignUp_Click">
 				<Viewbox>
 					<TextBlock>Regisztrálás</TextBlock>
