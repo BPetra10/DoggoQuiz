@@ -29,6 +29,17 @@ namespace Dogs.Learn
         {  
             var notes = new Notes.Notes();
             notes.dogName.Text = Dogname;
+            
+            var database = new DB.DB();
+            var notesList = database.GetNotes(Dogname);
+
+           for (int i = 0; i < notesList.Count; i++)
+            {
+                string fieldName = "tb" + (i+1);
+                var myTextBlock = (TextBlock)notes.FindName(fieldName);
+                myTextBlock.Text = notesList[i].LearningNotes;
+            }
+            
             Application.Current.MainWindow.Content = notes;
         }
 
@@ -40,58 +51,58 @@ namespace Dogs.Learn
 
         private void Komondor_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Komondor");
+            ToNotePage("komondor");
         }
 
         private void Agar_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Agár");
+            ToNotePage("agár");
         }
 
         private void NemetJuhasz_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Németjuhász");
+            ToNotePage("németjuhász");
         }
 
         private void FranciaBulldog_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Francia bulldog");
+            ToNotePage("francia bulldog");
         }
 
         private void Kuvasz_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Kuvasz");
+            ToNotePage("kuvasz");
         }
 
         private void Puli_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Puli");
+            ToNotePage("puli");
         }
 
         private void ErdelyiKopo_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Erdelyi kopó");
+            ToNotePage("erdelyi kopó");
         }
 
         private void Mudi_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Mudi");
+            ToNotePage("mudi");
         }
 
         private void Rottweiler_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Rottweiler");
+            ToNotePage("rottweiler");
         }
 
         private void Pumi_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Pumi");
+            ToNotePage("pumi");
 
         }
 
         private void Vizsla_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("Vizsla");
+            ToNotePage("vizsla");
         }
     }
 }

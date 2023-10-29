@@ -49,6 +49,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Description\paw1.png" />
     <Resource Include="Description\paw2.png" />
     <Resource Include="Learn\learn_img\agar.png" />
