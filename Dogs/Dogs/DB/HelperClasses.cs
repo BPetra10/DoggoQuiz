@@ -19,4 +19,20 @@ namespace Dogs.DB
 
     }
 
+    class Register { 
+        public string username { get; set; }
+
+        public string password { get; set; }
+    
+        public Register(MySqlDataReader reader) 
+        {
+            username = reader.GetString(0);
+            password = reader.GetString(1);
+        }
+
+        public Register(string _username, string _password) { 
+            username = _username;
+            password = _password;
+        }
+    }
 }

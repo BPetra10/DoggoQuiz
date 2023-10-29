@@ -56,6 +56,9 @@ namespace Dogs.Login_Register
                         password.Focus();
                     }
                     else {
+                        var database = new DB.DB();
+                        //Titkosítani kell a jelszót
+                        database.InsertUser(username.Text,password.Password);
                         Page login = new Login();
                         Application.Current.MainWindow.Content = login;
                     }

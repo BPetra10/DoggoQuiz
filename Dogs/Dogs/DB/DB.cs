@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Dogs.DB
 {
@@ -25,8 +26,8 @@ namespace Dogs.DB
         }
 
         public List<Notes> GetNotes(string Dogname) { 
-            string datas = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
-            MySqlCommand query = new MySqlCommand(datas, connection);
+            string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
+            MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             List<Notes> notes = new List<Notes>();
             try
@@ -47,6 +48,12 @@ namespace Dogs.DB
                 MessageBox.Show("Adatbázis hiba: "+e.Message);
             }
             return notes;
+        }
+
+        public void InsertUser(string username, string password) {
+            string data = $"INSERT INTO users(username,password) VALUES('{username}','{password}')";
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.ExecuteNonQuery();
         }
     }
 }
