@@ -45,7 +45,11 @@ namespace Dogs.DB
             }
             catch (Exception e)
             {
-                MessageBox.Show("Adatbázis hiba: "+e.Message);
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally 
+            { 
+                connection.Close();
             }
             return notes;
         }
@@ -53,7 +57,20 @@ namespace Dogs.DB
         public void InsertUser(string username, string password) {
             string data = $"INSERT INTO users(username,password) VALUES('{username}','{password}')";
             MySqlCommand query = new MySqlCommand(data, connection);
-            query.ExecuteNonQuery();
+            query.CommandTimeout = 60;
+            try
+            {
+                query.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally 
+            { 
+                connection.Close();
+            }
         }
     }
 }
