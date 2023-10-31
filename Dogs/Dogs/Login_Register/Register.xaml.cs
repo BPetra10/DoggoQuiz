@@ -25,7 +25,6 @@ namespace Dogs.Login_Register
         {
             InitializeComponent();
         }
-
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
             if (username.Text.Length == 0){
@@ -58,9 +57,16 @@ namespace Dogs.Login_Register
                     else {
                         var database = new DB.DB();
                         //Titkosítani kell a jelszót
-                        database.InsertUser(username.Text,password.Password);
-                        Page login = new Login();
-                        Application.Current.MainWindow.Content = login;
+                        if (!database.CheckUser(username.Text))
+                        {
+                            database.ReOpenConn();
+                            database.InsertUser(username.Text, password.Password);
+                            Page login = new Login();
+                            Application.Current.MainWindow.Content = login;
+                        }
+                        else {
+                            errorMsg.Text = "Ez a felhasználó már létezik!";
+                        }   
                     }
                 }
             }

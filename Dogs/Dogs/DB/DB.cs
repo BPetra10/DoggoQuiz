@@ -25,7 +25,11 @@ namespace Dogs.DB
             }
         }
 
-        public List<Notes> GetNotes(string Dogname) { 
+        public void ReOpenConn() { 
+            connection.Open();
+        }
+
+        public List<Notes> GetNotes(string Dogname) {
             string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
             MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
@@ -71,6 +75,30 @@ namespace Dogs.DB
             { 
                 connection.Close();
             }
+        }
+
+        public bool CheckUser(string username) {
+            string data = $"SELECT username FROM users WHERE username='{username}'";
+            MySqlCommand query = new MySqlCommand(data , connection);
+            query.CommandTimeout = 60;
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            { 
+                connection.Close(); 
+            }
+            return false;
         }
     }
 }
