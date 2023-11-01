@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dogs.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,42 +32,55 @@ namespace Dogs.Login_Register
                 errorMsg.Text = "Nem adtál meg felhasználónevet!";
                 username.Focus();
             }
-            else if (username.Text.Length < 6){
-                errorMsg.Text = "A felhasználónév legalább 6 betű!";
-                username.Focus();
-            }
-            else{
-                string usernameText = username.Text;
-                if (password.Password.Length == 0) {
-                    errorMsg.Text = "Nem adtál meg jelszót!";
-                    password.Focus();
+            else if (username.Text.Length!=0){
+                Regex uservalid = new Regex("^[a-zAáéúőóüöíA-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöíA-ZÁÉÚŐÓÜÖÍ0-9]{6,12}$");
+                if (!uservalid.IsMatch(username.Text))
+                {
+                    errorMsg.Text = "A felhasználónév legalább 6, max 12 karakter, betűvel kezdődik és számot is tartalmazhat!";
+                    username.Focus();
                 }
-                else if (password2.Password.Length == 0) {
-                    errorMsg.Text = "Nem adtad meg újra a jelszót!";
-                    password2.Focus();
-                }
-                else if (password.Password != password2.Password) {
-                    errorMsg.Text = "A 2 jelszó nem egyezik meg!";
-                }
-                else{
-                    Regex validation = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-                    if (!validation.IsMatch(password.Password)){
-                        errorMsg.Text = "A jelszó legalább 8 karakteres, kis és nagybetűt, számot, speciális karaktert tartalmazó!";
+                else {
+                    if (password.Password.Length == 0)
+                    {
+                        errorMsg.Text = "Nem adtál meg jelszót!";
                         password.Focus();
                     }
-                    else {
-                        var database = new DB.DB();
-                        //Titkosítani kell a jelszót
-                        if (!database.CheckUser(username.Text))
+                    else if (password2.Password.Length == 0)
+                    {
+                        errorMsg.Text = "Nem adtad meg újra a jelszót!";
+                        password2.Focus();
+                    }
+                    else if (password.Password != password2.Password)
+                    {
+                        errorMsg.Text = "A 2 jelszó nem egyezik meg!";
+                    }
+                    else
+                    {
+                        Regex pwdvalid = new Regex("^(?=.*?[A-ZÁÉÚŐÓÜÖÍ])(?=.*?[a-záéúőóüöí])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$");
+                        if (!pwdvalid.IsMatch(password.Password))
                         {
-                            database.ReOpenConn();
-                            database.InsertUser(username.Text, password.Password);
-                            Page login = new Login();
-                            Application.Current.MainWindow.Content = login;
+                            errorMsg.Text = "A jelszó legalább 8, de max 16 karakteres, kis és nagybetűt, számot, speciális karaktert tartalmazó!";
+                            password.Focus();
                         }
-                        else {
-                            errorMsg.Text = "Ez a felhasználó már létezik!";
-                        }   
+                        else
+                        {
+                            var database = new DB.DB();
+                            if (!database.CheckIfUserExist(username.Text))
+                            {
+                                database.ReOpenConn();
+
+                                PasswordHasher passwordHasher = new PasswordHasher();
+                                var hashedpass = passwordHasher.Generate(password.Password, out var salt);
+                                database.InsertUser(username.Text, hashedpass, Convert.ToHexString(salt));
+
+                                Page login = new Login();
+                                Application.Current.MainWindow.Content = login;
+                            }
+                            else
+                            {
+                                errorMsg.Text = "Ez a felhasználó már létezik!";
+                            }
+                        }
                     }
                 }
             }

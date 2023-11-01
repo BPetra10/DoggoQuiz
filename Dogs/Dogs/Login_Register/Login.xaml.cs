@@ -27,8 +27,39 @@ namespace Dogs.Login_Register
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            Page learn = new Learn.Learn();
-            Application.Current.MainWindow.Content = learn;
+            if (username.Text.Length == 0)
+            {
+                errorMsg.Text = "Nem adtál meg felhasználónevet!";
+                username.Focus();
+            }
+            else if (password.Password.Length == 0)
+            {
+                errorMsg.Text = "Nem adtál meg jelszót!";
+            }
+            else {
+                DB.PasswordHasher passwordHasher = new DB.PasswordHasher();
+                DB.DB database = new DB.DB();
+                if (database.CheckIfUserExist(username.Text))
+                {
+                    database.ReOpenConn();
+                    var user = database.GetUserSaltAndPwd(username.Text);
+                    if (user!=null)
+                    {
+                        if (passwordHasher.IsValid(password.Password, user.password, Convert.FromHexString(user.salt)))
+                        {
+                            Page learn = new Learn.Learn();
+                            Application.Current.MainWindow.Content = learn;
+                        }
+                        else
+                        {
+                            errorMsg.Text = "Nem megfelelő felhasználónév vagy jelszó!";
+                        }
+                    }
+                }
+                else {
+                    errorMsg.Text = "Ez a felhasználó nem létezik az adatbázisban!";
+                }
+            }
         }
     }
 }

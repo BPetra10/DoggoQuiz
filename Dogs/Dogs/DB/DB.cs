@@ -2,10 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
+using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace Dogs.DB
 {
@@ -58,8 +62,8 @@ namespace Dogs.DB
             return notes;
         }
 
-        public void InsertUser(string username, string password) {
-            string data = $"INSERT INTO users(username,password) VALUES('{username}','{password}')";
+        public void InsertUser(string username, string password, string salt) {
+            string data = $"INSERT INTO users(username,password,salt) VALUES('{username}','{password}','{salt}')";
             MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
@@ -77,7 +81,7 @@ namespace Dogs.DB
             }
         }
 
-        public bool CheckUser(string username) {
+        public bool CheckIfUserExist(string username) {
             string data = $"SELECT username FROM users WHERE username='{username}'";
             MySqlCommand query = new MySqlCommand(data , connection);
             query.CommandTimeout = 60;
@@ -99,6 +103,34 @@ namespace Dogs.DB
                 connection.Close(); 
             }
             return false;
+        }
+
+        /*Basically if the database contains the user, this will give back their password and salt,
+         but if the user does not exist, this will give back null, so User can be nullable. */
+        public User? GetUserSaltAndPwd(string username) {
+                string data = $"SELECT password,salt FROM users WHERE username='{username}'";
+                MySqlCommand query = new MySqlCommand(data, connection);
+                query.CommandTimeout = 60;
+                try
+                {
+                    MySqlDataReader reader = query.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return new User(reader);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            return null;
         }
     }
 }

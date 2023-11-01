@@ -26,7 +26,7 @@
 				<TextBlock>Bejelentkezés</TextBlock>
 			</Viewbox>
 			<Viewbox Grid.Row="1" Grid.ColumnSpan="3">
-				<TextBlock Foreground="Red">Hibaüzi, ha van!</TextBlock>
+				<TextBlock x:Name="errorMsg" Foreground="Red">Hibaüzi, ha van!</TextBlock>
 			</Viewbox>
 		<Grid Background="Bisque" Grid.Column="1" Grid.Row="2">
 			<Grid.ColumnDefinitions>
