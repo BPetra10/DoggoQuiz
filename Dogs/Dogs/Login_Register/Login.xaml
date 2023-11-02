@@ -58,5 +58,10 @@
 				</Button.Resources>
 			</Button>
 		</Grid>
+		<Button x:Name="ToRegister" Grid.Row="3" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="5" Click="ToRegister_Click">
+			<Viewbox>
+				<TextBlock FontWeight="Bold">Nincs fiókom, regisztrálok.</TextBlock>
+			</Viewbox>
+		</Button>
 	</Grid>
 </Page>

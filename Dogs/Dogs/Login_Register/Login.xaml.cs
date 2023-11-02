@@ -61,5 +61,11 @@ namespace Dogs.Login_Register
                 }
             }
         }
+
+        private void ToRegister_Click(object sender, RoutedEventArgs e)
+        {
+            Page register = new Register();
+            Application.Current.MainWindow.Content = register;
+        }
     }
 }
