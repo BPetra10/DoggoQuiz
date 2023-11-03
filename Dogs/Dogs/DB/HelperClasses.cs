@@ -11,7 +11,7 @@ namespace Dogs.DB
 {
     class Notes
     {
-        public string LearningNotes { get; set; }
+        public string LearningNotes { get; }
 
         public Notes(MySqlDataReader reader)
         {
@@ -31,7 +31,7 @@ namespace Dogs.DB
     }
 
     /*Hashing passwords with Pbkdf2 (Password-Based Key Derivation Function)*/
-    public class PasswordHasher
+     class PasswordHasher
     {
         const int keySize = 64;
         const int iterations = 350000;
@@ -61,6 +61,22 @@ namespace Dogs.DB
             /*Determines the equality of two byte sequences in an amount of time 
              that depends on the length of the sequences, but not their values.*/
             return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
+        }
+     }
+
+    class Question {
+        public string question { get; }
+        public string correct { get; }
+        public string answer1 { get; }
+        public string answer2 { get; }
+        public string answer3 { get; }
+        public Question(MySqlDataReader reader)
+        {
+            question = reader.GetString(0);
+            correct = reader.GetString(1);
+            answer1 = reader.GetString(2);
+            answer2 = reader.GetString(3);
+            answer3 = reader.GetString(4);
         }
     }
 }

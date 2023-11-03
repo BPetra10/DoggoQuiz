@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dogs.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace Dogs.Login_Register
                 errorMsg.Text = "Nem adtál meg jelszót!";
             }
             else {
-                DB.PasswordHasher passwordHasher = new DB.PasswordHasher();
+                PasswordHasher passwordHasher = new PasswordHasher();
                 DB.DB database = new DB.DB();
                 if (database.CheckIfUserExist(username.Text))
                 {

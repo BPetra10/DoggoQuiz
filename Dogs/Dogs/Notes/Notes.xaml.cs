@@ -36,5 +36,11 @@ namespace Dogs.Notes
             Page learn = new Learn.Learn();
             Application.Current.MainWindow.Content = learn; 
         }
+
+        private void ToGame_Click(object sender, RoutedEventArgs e)
+        {
+            Page game = new Game.GameMain();
+            Application.Current.MainWindow.Content = game;
+        }
     }
 }

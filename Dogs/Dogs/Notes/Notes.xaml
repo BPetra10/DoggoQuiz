@@ -39,7 +39,7 @@
 				<TextBlock>Tanuló <LineBreak/> oldalra</TextBlock>
 			</Viewbox>
 		</Button>
-		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="20,20,20,20">
+		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="20,20,20,20" Click="ToGame_Click">
 			<Viewbox>
 				<TextBlock>Játékra</TextBlock>
 			</Viewbox>

@@ -132,5 +132,42 @@ namespace Dogs.DB
                 }
             return null;
         }
+
+        public List<Question> GetQuestions(string dogs) {
+            string data;
+            if (dogs == "*")
+            {
+                data = "SELECT question,correct,answer1,answer2,answer3 FROM questions";
+            }
+            else 
+            { 
+                data = $"SELECT question,correct,answer1,answer2,answer3 FROM questions INNER JOIN dogs ON questions.dog_id=dogs.dog_id WHERE dogs.dog_name IN({dogs})";
+            }
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            List<Question> questions = new List<Question>();
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        questions.Add(new Question(reader));
+                    }
+                }
+                reader.Close();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return questions;
+        }
     }
 }
