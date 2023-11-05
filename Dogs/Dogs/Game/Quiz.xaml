@@ -9,7 +9,70 @@
       Title="Quiz">
 
 	<Grid x:Name="QuizGrid" Loaded="QuizGrid_Loaded">
-		<Label Content="Label" x:Name="test" HorizontalAlignment="Left" Margin="145,85,0,0" VerticalAlignment="Top" Height="186" Width="378"/>
-
+		<Grid.Background>
+			<ImageBrush ImageSource="quizBack.png" Stretch="Fill"/>
+		</Grid.Background>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center">
+			<TextBlock  Background="Beige" Opacity="0.8" Margin="3,0,3,0" x:Name="question">
+					Random kérdés illusztrálás?
+			</TextBlock>
+		</Viewbox>
+		<Button x:Name="Btn1" Background="Beige" Margin="10" Grid.Row="1" Click="Btn">
+			<Viewbox>
+				<TextBlock x:Name="ans1">
+				tesztszöveg
+				</TextBlock>
+			</Viewbox>
+			<Button.Resources>
+				<Style TargetType="Border">
+					<Setter Property="CornerRadius" Value="10"/>
+				</Style>
+			</Button.Resources>
+		</Button>
+		<Button x:Name="Btn2" Background="Beige" Margin="10" Grid.Row="1" Grid.Column="1"  Click="Btn">
+			<Viewbox>
+				<TextBlock x:Name="ans2">
+				tesztszöveg
+				</TextBlock>
+			</Viewbox>
+			<Button.Resources>
+				<Style TargetType="Border">
+					<Setter Property="CornerRadius" Value="10"/>
+				</Style>
+			</Button.Resources>
+		</Button>
+		<Button x:Name="Btn3" Background="Beige" Margin="10" Grid.Row="2"  Click="Btn">
+			<Viewbox>
+				<TextBlock x:Name="ans3">
+				tesztszöveg
+				</TextBlock>
+			</Viewbox>
+			<Button.Resources>
+				<Style TargetType="Border">
+					<Setter Property="CornerRadius" Value="10"/>
+				</Style>
+			</Button.Resources>
+		</Button>
+		<Button x:Name="Btn4" Background="Beige" Margin="10" Grid.Row="2" Grid.Column="1"  Click="Btn">
+			<Viewbox>
+				<TextBlock x:Name="ans4">
+				tesztszöveg
+				</TextBlock>
+			</Viewbox>
+			<Button.Resources>
+				<Style TargetType="Border">
+					<Setter Property="CornerRadius" Value="10"/>
+				</Style>
+			</Button.Resources>
+		</Button>
 	</Grid>
 </Page>

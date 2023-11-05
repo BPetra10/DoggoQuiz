@@ -11,6 +11,7 @@
     <None Remove="Description\paw1.png" />
     <None Remove="Description\paw2.png" />
     <None Remove="Game\question.jpg" />
+    <None Remove="Game\quizBack.png" />
     <None Remove="Learn\learn_img\agar.png" />
     <None Remove="Learn\learn_img\dog_house.png" />
     <None Remove="Learn\learn_img\erdelyi_kopo.png" />
@@ -43,6 +44,7 @@
 
   <ItemGroup>
     <Resource Include="Game\question.jpg" />
+    <Resource Include="Game\quizBack.png" />
     <Resource Include="WallOfGlory\images\GY_mudi.jpg" />
   </ItemGroup>
 
