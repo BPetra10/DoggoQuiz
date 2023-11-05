@@ -72,7 +72,7 @@ namespace Dogs.Game
         }
         
         int  questionIndex = 0;
-        //TODO: how to color sender if it was 
+        //TODO: how to color sender if it was wrong to red
         private void Btn(object sender, RoutedEventArgs e)
         {
             List<TextBlock> answerList = new List<TextBlock>() {ans1,ans2,ans3,ans4};
