@@ -46,48 +46,62 @@ namespace Dogs.Game
         }
          void NextQuestionWithAns(int index) 
          {
-            question.Text = collection[index].question;
+            if (questionIndex != collection.Count)
+            {
+                ans1.Foreground = new SolidColorBrush(Colors.Black);
+                ans2.Foreground = new SolidColorBrush(Colors.Black);
+                ans3.Foreground = new SolidColorBrush(Colors.Black);
+                ans4.Foreground = new SolidColorBrush(Colors.Black);
 
-            List<string> answers = new List<string>() { collection[index].answer1, collection[index].answer2, 
+                question.Text = collection[index].question;
+
+                List<string> answers = new List<string>() { collection[index].answer1, collection[index].answer2,
                 collection[index].answer3, collection[index].correct };
 
-            Shuffle(answers);
+                Shuffle(answers);
 
-            ans1.Text = answers[0];
-            ans2.Text = answers[1];
-            ans3.Text = answers[2];
-            ans4.Text = answers[3];
+                ans1.Text = answers[0];
+                ans2.Text = answers[1];
+                ans3.Text = answers[2];
+                ans4.Text = answers[3];
+            }
         }
         private void QuizGrid_Loaded(object sender, RoutedEventArgs e)
         {
             NextQuestionWithAns(0);
         }
-
-        //TODO:Checking wich button has the correct answer maybe get ButtonList and check like that?
-        /*
-        private void CheckIfCorrect(object sender, Button senderBtn) {
-            if (sender.Equals(senderBtn))
-            {
-                if (senderBtn.Content.ToString() == collection[i].correct)
-                {
-                    senderBtn.Background = new SolidColorBrush(Colors.Green);
-                }
-                else
-                {
-                    senderBtn.Background = new SolidColorBrush(Colors.Red);
-
-                }
-            }
-        }
-        */
-
-        int i = 0;
+        
+        int  questionIndex = 0;
+        //TODO: how to color sender if it was 
         private void Btn(object sender, RoutedEventArgs e)
         {
-            i++;
-            if (i != collection.Count)
+            List<TextBlock> answerList = new List<TextBlock>() {ans1,ans2,ans3,ans4};
+
+            Button senderBtn = (Button)sender;
+            
+            if (questionIndex != collection.Count)
             {
-                NextQuestionWithAns(i);
+                if (senderBtn.Content.ToString() == collection[questionIndex].correct)
+                {
+                    senderBtn.Foreground = new SolidColorBrush(Colors.Green);
+                }
+                else 
+                {
+                    var a = answerList.Where(x => x.Text == collection[questionIndex].correct).Single();
+                    a.Foreground = new SolidColorBrush(Colors.Green);
+                }
+            }
+            else {
+                MessageBox.Show("Vége");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (questionIndex != collection.Count)
+            {
+                questionIndex++;
+                NextQuestionWithAns(questionIndex);
             }
             else {
                 MessageBox.Show("Vége");
