@@ -72,23 +72,28 @@ namespace Dogs.Game
         }
         
         int  questionIndex = 0;
-        //TODO: how to color sender if it was wrong to red
+       
         private void Btn(object sender, RoutedEventArgs e)
         {
             List<TextBlock> answerList = new List<TextBlock>() {ans1,ans2,ans3,ans4};
 
+            //We know that the sender is a Button, and this button always has a viewbox inside.
+            //Inside the viewbox, there is only one child always, and that is a TextBlock.
             Button senderBtn = (Button)sender;
+            Viewbox senderBtnVB = (Viewbox)senderBtn.Content;
+            TextBlock senderBtnTB = (TextBlock)senderBtnVB.Child;
             
             if (questionIndex != collection.Count)
             {
                 if (senderBtn.Content.ToString() == collection[questionIndex].correct)
                 {
-                    senderBtn.Foreground = new SolidColorBrush(Colors.Green);
+                    senderBtnTB.Foreground = new SolidColorBrush(Colors.Green);
                 }
                 else 
                 {
-                    var a = answerList.Where(x => x.Text == collection[questionIndex].correct).Single();
-                    a.Foreground = new SolidColorBrush(Colors.Green);
+                    senderBtnTB.Foreground = new SolidColorBrush(Colors.Red);
+                    var correctAns = answerList.Where(x => x.Text == collection[questionIndex].correct).Single();
+                    correctAns.Foreground = new SolidColorBrush(Colors.Green);
                 }
             }
             else {
