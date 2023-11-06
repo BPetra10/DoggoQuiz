@@ -33,6 +33,7 @@ namespace Dogs.DB
             connection.Open();
         }
 
+        //Fact: ${} string interpolation
         public List<Notes> GetNotes(string Dogname) {
             string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
             MySqlCommand query = new MySqlCommand(data, connection);
