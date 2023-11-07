@@ -51,11 +51,14 @@ namespace Dogs.Login_Register
                             /*If we have a successful login, we add the userId to Appplication.Current.Resources
                              so we can access the logged-in person ID later in the app.*/
                             database.ReOpenConn();
+                           
                             int id = database.GetUserId(username.Text);
-                            Application.Current.Resources.Add("UserId", id);
-
-                            Page learn = new Learn.Learn();
-                            Application.Current.MainWindow.Content = learn;
+                            if (id != 0)
+                            {
+                                Application.Current.Resources.Add("UserId", id);
+                                Page learn = new Learn.Learn();
+                                Application.Current.MainWindow.Content = learn;
+                            }
                         }
                         else
                         {
