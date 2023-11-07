@@ -48,6 +48,7 @@ namespace Dogs.Game
          {
             if (questionIndex != collection.Count)
             {
+                Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = true;
                 ans1.Foreground = new SolidColorBrush(Colors.Black);
                 ans2.Foreground = new SolidColorBrush(Colors.Black);
                 ans3.Foreground = new SolidColorBrush(Colors.Black);
@@ -68,6 +69,8 @@ namespace Dogs.Game
         }
         private void QuizGrid_Loaded(object sender, RoutedEventArgs e)
         {
+            //Testing ID reference
+           // test.Content = Application.Current.Resources["UserId"];
             NextQuestionWithAns(0);
         }
         
@@ -75,6 +78,8 @@ namespace Dogs.Game
        
         private void Btn(object sender, RoutedEventArgs e)
         {
+            //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
+            Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = false;
             List<TextBlock> answerList = new List<TextBlock>() {ans1,ans2,ans3,ans4};
 
             //We know that the sender is a Button, and this button always has a viewbox inside.

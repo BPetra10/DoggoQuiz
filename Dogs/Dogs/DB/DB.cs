@@ -170,5 +170,31 @@ namespace Dogs.DB
             }
             return questions;
         }
+        public int GetUserId(string username) {
+            string data = $"SELECT user_id FROM users WHERE username='{username}'";
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            int userId = 0;//UserID will never become 0, so if something wrong we will know
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    userId = reader.GetInt32(0);
+                    reader.Close();
+                    return userId;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return userId;
+        }
     }
 }
