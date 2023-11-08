@@ -33,7 +33,7 @@ namespace Dogs.Login_Register
                 username.Focus();
             }
             else if (username.Text.Length!=0){
-                Regex uservalid = new Regex("^[a-zAáéúőóüöíA-ZÁÉÚŐÓÜÖÍ][a-záéúőóüöíA-ZÁÉÚŐÓÜÖÍ0-9]{6,12}$");
+                Regex uservalid = new Regex("^[a-záéúőóüöíA-ZÁÉÚŐÓÜÖÍ0-9]{6,12}$");
                 if (!uservalid.IsMatch(username.Text))
                 {
                     errorMsg.Text = "A felhasználónév legalább 6, max 12 karakter, betűvel kezdődik és számot is tartalmazhat!";
