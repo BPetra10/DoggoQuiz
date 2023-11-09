@@ -11,7 +11,6 @@ CREATE TABLE `dogapp`.`points`
 (`id` INT NOT NULL AUTO_INCREMENT , 
 `user_id` INT NOT NULL , 
 `points` INT NOT NULL , 
-`date` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 PRIMARY KEY (`id`),
 FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
 ) ENGINE = InnoDB;
