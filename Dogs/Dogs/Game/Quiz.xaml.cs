@@ -93,6 +93,7 @@ namespace Dogs.Game
                 if (senderBtnTB.Text == collection[questionIndex].correct)
                 {
                     points += 10;
+                    scoreText.Text = "Megszerzett pontok: " + points;
                     senderBtnTB.Foreground = new SolidColorBrush(Colors.Green);
                 }
                 else 
@@ -112,7 +113,7 @@ namespace Dogs.Game
                 NextQuestionWithAns(questionIndex);
             }
             else {
-                MessageBox.Show("Vége"+points);
+                MessageBox.Show("Vége");
             }
         }
     }
