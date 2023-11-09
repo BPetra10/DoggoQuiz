@@ -66,16 +66,16 @@ namespace Dogs.Game
                 ans3.Text = answers[2];
                 ans4.Text = answers[3];
             }
-        }
+         }
         private void QuizGrid_Loaded(object sender, RoutedEventArgs e)
         {
             //Testing ID reference
            // test.Content = Application.Current.Resources["UserId"];
             NextQuestionWithAns(0);
         }
-        
-        int  questionIndex = 0;
-       
+
+        int questionIndex = 0;
+        int points = 0;
         private void Btn(object sender, RoutedEventArgs e)
         {
             //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
@@ -90,8 +90,9 @@ namespace Dogs.Game
             
             if (questionIndex != collection.Count)
             {
-                if (senderBtn.Content.ToString() == collection[questionIndex].correct)
+                if (senderBtnTB.Text == collection[questionIndex].correct)
                 {
+                    points += 10;
                     senderBtnTB.Foreground = new SolidColorBrush(Colors.Green);
                 }
                 else 
@@ -101,11 +102,8 @@ namespace Dogs.Game
                     correctAns.Foreground = new SolidColorBrush(Colors.Green);
                 }
             }
-            else {
-                MessageBox.Show("Vége");
-            }
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (questionIndex != collection.Count)
@@ -114,7 +112,7 @@ namespace Dogs.Game
                 NextQuestionWithAns(questionIndex);
             }
             else {
-                MessageBox.Show("Vége");
+                MessageBox.Show("Vége"+points);
             }
         }
     }
