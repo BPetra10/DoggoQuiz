@@ -21,20 +21,24 @@ namespace Dogs.DB
         public DB()
         {
             connection = new MySqlConnection(connectionString);
-            try { 
+            try
+            {
                 connection.Open();
-            } 
-            catch (Exception e) { 
+            }
+            catch (Exception e)
+            {
                 MessageBox.Show("Adatbázis hiba: " + e.Message);
             }
         }
 
-        public void ReOpenConn() { 
+        public void ReOpenConn()
+        {
             connection.Open();
         }
 
         //Fact: ${} string interpolation
-        public List<Notes> GetNotes(string Dogname) {
+        public List<Notes> GetNotes(string Dogname)
+        {
             string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
             MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
@@ -56,14 +60,15 @@ namespace Dogs.DB
             {
                 MessageBox.Show("Adatbázis hiba: " + e.Message);
             }
-            finally 
-            { 
+            finally
+            {
                 connection.Close();
             }
             return notes;
         }
 
-        public void InsertUser(string username, string password, string salt) {
+        public void InsertUser(string username, string password, string salt)
+        {
             string data = $"INSERT INTO users(username,password,salt) VALUES('{username}','{password}','{salt}')";
             MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
@@ -76,15 +81,16 @@ namespace Dogs.DB
             {
                 MessageBox.Show("Adatbázis hiba: " + e.Message);
             }
-            finally 
-            { 
+            finally
+            {
                 connection.Close();
             }
         }
 
-        public bool CheckIfUserExist(string username) {
+        public bool CheckIfUserExist(string username)
+        {
             string data = $"SELECT username FROM users WHERE username='{username}'";
-            MySqlCommand query = new MySqlCommand(data , connection);
+            MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
@@ -100,48 +106,50 @@ namespace Dogs.DB
                 MessageBox.Show("Adatbázis hiba: " + e.Message);
             }
             finally
-            { 
-                connection.Close(); 
+            {
+                connection.Close();
             }
             return false;
         }
 
         /*Basically if the database contains the user, this will give back their password and salt,
          but if the user does not exist, this will give back null, so User can be nullable. */
-        public User? GetUserSaltAndPwd(string username) {
-                string data = $"SELECT password,salt FROM users WHERE username='{username}'";
-                MySqlCommand query = new MySqlCommand(data, connection);
-                query.CommandTimeout = 60;
-                try
-                {
-                    MySqlDataReader reader = query.ExecuteReader();
+        public User? GetUserSaltAndPwd(string username)
+        {
+            string data = $"SELECT password,salt FROM users WHERE username='{username}'";
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
 
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        return new User(reader);
-                    }
-                    reader.Close();
-                }
-                catch (Exception e)
+                if (reader.HasRows)
                 {
-                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                    reader.Read();
+                    return new User(reader);
                 }
-                finally
-                {
-                    connection.Close();
-                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
             return null;
         }
 
-        public List<Question> GetQuestions(string dogs) {
+        public List<Question> GetQuestions(string dogs)
+        {
             string data;
             if (dogs == "*")
             {
                 data = "SELECT question,correct,answer1,answer2,answer3 FROM questions";
             }
-            else 
-            { 
+            else
+            {
                 data = $"SELECT question,correct,answer1,answer2,answer3 FROM questions INNER JOIN dogs ON questions.dog_id=dogs.dog_id WHERE dogs.dog_name IN({dogs})";
             }
             MySqlCommand query = new MySqlCommand(data, connection);
@@ -170,7 +178,8 @@ namespace Dogs.DB
             }
             return questions;
         }
-        public int GetUserId(string username) {
+        public int GetUserId(string username)
+        {
             string data = $"SELECT user_id FROM users WHERE username='{username}'";
             MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
@@ -196,5 +205,75 @@ namespace Dogs.DB
             }
             return userId;
         }
+
+        /*Similarly to GetUserSaltAndPwd we check if the DB points table has the userId given in the parameter, 
+         * if yes, giving back a Points class instance, else returning null. */
+        public Points? GetUserPoint(int userId)
+        {
+            string data = $"SELECT user_id,points FROM points WHERE user_id='{userId}'";
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    return new Points(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return null;
+        }
+
+        /*If GetUserPoint gives back a Points instance, then we have to update the users points.
+        Else, we will insert their points to DB.*/
+        public void InsertOrUpdatePoints(int user_id, int points, bool isInsert) {
+            if (isInsert) {
+                string data = $"INSERT INTO points(user_id,points) VALUES('{user_id}','{points}')";
+                MySqlCommand query = new MySqlCommand(data, connection);
+                query.CommandTimeout = 60;
+                try
+                {
+                    query.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else {
+                string data = $"UPDATE points SET points = {points} WHERE user_id={user_id}";
+                MySqlCommand query = new MySqlCommand(data, connection);
+                query.CommandTimeout = 60;
+                try
+                {
+                    query.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
     }
 }

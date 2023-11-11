@@ -22,12 +22,12 @@ namespace Dogs.Game
     public partial class Quiz : Page
     {
         List<Question> collection;
+        DB.DB database = new DB.DB();
         public Quiz(string selectedDogs)
         {
             InitializeComponent();
 
             //Getting selected dogs questions and answers from DB, and Shuffling its sequence.
-            DB.DB database = new DB.DB();
             collection = database.GetQuestions(selectedDogs);
             Shuffle(collection);
         }
@@ -113,6 +113,19 @@ namespace Dogs.Game
                 NextQuestionWithAns(questionIndex);
             }
             else {
+                database.ReOpenConn();
+                int user_id = (int)Application.Current.Resources["UserId"];
+                var userPoints = database.GetUserPoint(user_id);
+                if (userPoints != null) {
+                    //Update method for DB: getting databse points and adding local points to it.
+                    database.ReOpenConn();
+                    database.InsertOrUpdatePoints(user_id, userPoints.points + points, false);
+                } 
+                else {
+                    //Insert into points table
+                    database.ReOpenConn();
+                    database.InsertOrUpdatePoints(user_id, points, true);
+                }
                 MessageBox.Show("Vége");
             }
         }

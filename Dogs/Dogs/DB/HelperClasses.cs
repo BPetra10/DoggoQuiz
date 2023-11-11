@@ -79,4 +79,13 @@ namespace Dogs.DB
             answer3 = reader.GetString(4);
         }
     }
+
+    class Points { 
+        public int user_id { get; }
+        public int points { get; }
+        public Points(MySqlDataReader reader) { 
+            user_id = reader.GetInt32(0);
+            points = reader.GetInt32(1);
+        }
+    }
 }
