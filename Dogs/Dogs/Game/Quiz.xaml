@@ -78,6 +78,5 @@
 				</Style>
 			</Button.Resources>
 		</Button>
-		<Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Click="Button_Click" x:Name="test"/>
 	</Grid>
 </Page>

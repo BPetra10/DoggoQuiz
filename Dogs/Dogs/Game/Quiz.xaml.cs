@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Timers;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Dogs.Game
 {
@@ -44,8 +47,30 @@ namespace Dogs.Game
                 collection[k] = temp;
             }
         }
-         void NextQuestionWithAns(int index) 
-         {
+
+        void SaveAndRedirect() {
+            database.ReOpenConn();
+            int user_id = (int)Application.Current.Resources["UserId"];
+            var userPoints = database.GetUserPoint(user_id);
+            if (userPoints != null)
+            {
+                //Update method for DB: getting databse points and adding local points to it.
+                database.ReOpenConn();
+                database.InsertOrUpdatePoints(user_id, userPoints.points + points, false);
+            }
+            else
+            {
+                //Insert into points table
+                database.ReOpenConn();
+                database.InsertOrUpdatePoints(user_id, points, true);
+            }
+            //TODO: instead of messagebox redirect to some page, or show actualpoints in messagebox and go to shop.
+            MessageBox.Show("Vége");
+        }
+
+        int questionIndex = 0;
+        void NextQuestionWithAns(int questionIndex) 
+        {
             if (questionIndex != collection.Count)
             {
                 Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = true;
@@ -54,10 +79,10 @@ namespace Dogs.Game
                 ans3.Foreground = new SolidColorBrush(Colors.Black);
                 ans4.Foreground = new SolidColorBrush(Colors.Black);
 
-                question.Text = collection[index].question;
+                question.Text = collection[questionIndex].question;
 
-                List<string> answers = new List<string>() { collection[index].answer1, collection[index].answer2,
-                collection[index].answer3, collection[index].correct };
+                List<string> answers = new List<string>() { collection[questionIndex].answer1, 
+                collection[questionIndex].answer2, collection[questionIndex].answer3, collection[questionIndex].correct };
 
                 Shuffle(answers);
 
@@ -66,15 +91,31 @@ namespace Dogs.Game
                 ans3.Text = answers[2];
                 ans4.Text = answers[3];
             }
-         }
+            else 
+            {
+                SaveAndRedirect();
+            }
+        }
         private void QuizGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            //Testing ID reference
-           // test.Content = Application.Current.Resources["UserId"];
             NextQuestionWithAns(0);
         }
 
-        int questionIndex = 0;
+        //Change the question automatically after 3 sec.
+        void DelayQuestion()
+        {
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);
+            
+            timer.Tick += delegate
+            {
+                NextQuestionWithAns(questionIndex);
+                timer.Stop();
+            };
+           
+            timer.Start();
+        }
+
         int points = 0;
         private void Btn(object sender, RoutedEventArgs e)
         {
@@ -102,31 +143,8 @@ namespace Dogs.Game
                     var correctAns = answerList.Where(x => x.Text == collection[questionIndex].correct).Single();
                     correctAns.Foreground = new SolidColorBrush(Colors.Green);
                 }
-            }
-        }
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (questionIndex != collection.Count)
-            {
                 questionIndex++;
-                NextQuestionWithAns(questionIndex);
-            }
-            else {
-                database.ReOpenConn();
-                int user_id = (int)Application.Current.Resources["UserId"];
-                var userPoints = database.GetUserPoint(user_id);
-                if (userPoints != null) {
-                    //Update method for DB: getting databse points and adding local points to it.
-                    database.ReOpenConn();
-                    database.InsertOrUpdatePoints(user_id, userPoints.points + points, false);
-                } 
-                else {
-                    //Insert into points table
-                    database.ReOpenConn();
-                    database.InsertOrUpdatePoints(user_id, points, true);
-                }
-                MessageBox.Show("Vége");
+                DelayQuestion();
             }
         }
     }
