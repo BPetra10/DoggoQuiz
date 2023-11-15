@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WallOfGlory">
-	<Grid Background="#FF90B293">
+	<Grid x:Name="WallGrid" Background="#FF90B293" Loaded="WallGrid_Loaded">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="20*"/>
 			<ColumnDefinition Width="20*"/>
@@ -21,11 +21,11 @@
 			<RowDefinition Height="15*"/>
 		</Grid.RowDefinitions>
 		<Viewbox Grid.ColumnSpan="2">
-			<TextBlock>Szerezz egy képet a dicsőségfaladra:</TextBlock>
+			<TextBlock>Szerezz egy képet a faladra:</TextBlock>
 		</Viewbox>
 		<Button Grid.Column="2" x:Name="Raffle" Click="Raffle_Click" Margin="10">
 			<Viewbox>
-				<TextBlock>Sorsolás 100 pontért.</TextBlock>
+				<TextBlock>Sorsolás 100 pontért</TextBlock>
 			</Viewbox>
 			<Button.Resources>
 				<Style TargetType="Border">
@@ -34,7 +34,7 @@
 			</Button.Resources>
 		</Button>
 		<Viewbox Grid.Column="3">
-			<TextBlock x:Name="points">Pontjaid:  "Pont" </TextBlock>
+			<TextBlock x:Name="points" Margin="5,0,5,0">Pontjaid: 0 </TextBlock>
 		</Viewbox>
 		<Button x:Name="BackToLearn" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="10" Click="BackToLearn_Click">
 			<Viewbox>

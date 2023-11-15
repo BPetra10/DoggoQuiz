@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,6 +44,17 @@ namespace Dogs.WallOfGlory
             }
             else {
                 MessageBox.Show("Kigyűjtötted a képeket!");
+            }
+        }
+
+        private void WallGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            DB.DB database = new DB.DB();
+            int user_id = (int)Application.Current.Resources["UserId"];
+            var userPoints = database.GetUserPoint(user_id);
+            if (userPoints != null)
+            {
+                points.Text = "Pontjaid: " + userPoints.points.ToString();
             }
         }
     }
