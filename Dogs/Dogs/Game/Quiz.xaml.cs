@@ -64,8 +64,10 @@ namespace Dogs.Game
                 database.ReOpenConn();
                 database.InsertOrUpdatePoints(user_id, points, true);
             }
-            //TODO: instead of messagebox redirect to some page, or show actualpoints in messagebox and go to shop.
-            MessageBox.Show("Vége");
+            //Show actualpoints in messagebox and go to shop.
+            MessageBox.Show("Helyes válaszok száma: "+collection.Count+"/"+points/10);
+            Page shop = new WallOfGlory.WallOfGlory();
+            Application.Current.MainWindow.Content = shop;
         }
 
         int questionIndex = 0;
