@@ -275,5 +275,73 @@ namespace Dogs.DB
             }
         }
 
+        /*Similarly to GetUserPoints we check if the DB images table has the userId given in the parameter, 
+        * if yes, giving back an Image class instance, else returning null. */
+        public Images? GetUserImages(int userId)
+        {
+            string data = $"SELECT user_id,bought_images FROM images WHERE user_id='{userId}'";
+            MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            try
+            {
+                MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    return new Images(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return null;
+        }
+
+        public void InsertOrUpdateImages(int user_id, string bought_images, bool isInsert) {
+            if (isInsert)
+            {
+                string data = $"INSERT INTO images(user_id,bought_images) VALUES('{user_id}','{bought_images}')";
+                MySqlCommand query = new MySqlCommand(data, connection);
+                query.CommandTimeout = 60;
+                try
+                {
+                    query.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                string data = $"UPDATE images SET bought_images = '{bought_images}' WHERE user_id={user_id}";
+                MySqlCommand query = new MySqlCommand(data, connection);
+                query.CommandTimeout = 60;
+                try
+                {
+                    query.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Adatbázis hiba: " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

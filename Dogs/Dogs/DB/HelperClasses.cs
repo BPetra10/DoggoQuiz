@@ -88,4 +88,14 @@ namespace Dogs.DB
             points = reader.GetInt32(1);
         }
     }
+
+    class Images {
+        public int user_id { get; }
+        public string images { get; }
+        public Images(MySqlDataReader reader)
+        {
+            user_id = reader.GetInt32(0);
+            images = reader.GetString(1);
+        }
+    }
 }

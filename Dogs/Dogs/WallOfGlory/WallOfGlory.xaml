@@ -20,7 +20,7 @@
 			<RowDefinition Height="15*"/>
 			<RowDefinition Height="15*"/>
 		</Grid.RowDefinitions>
-		<Viewbox Grid.ColumnSpan="2">
+		<Viewbox Grid.ColumnSpan="2" x:Name="raffleCongrats">
 			<TextBlock>Szerezz egy képet a faladra:</TextBlock>
 		</Viewbox>
 		<Button Grid.Column="2" x:Name="Raffle" Click="Raffle_Click" Margin="10">
@@ -41,27 +41,27 @@
 				<TextBlock TextAlignment="Center">Tanuló<LineBreak/>oldalra vissza</TextBlock>
 			</Viewbox>
 		</Button>
-		<Image Grid.Row="1" Grid.Column="1" Source="images/GY_agar.jpg" Visibility="Hidden" x:Name="agar" Stretch="Fill"/>
+		<Image Uid="0" Grid.Row="1" Grid.Column="1" Source="images/GY_agar.jpg" Visibility="Hidden" x:Name="agar" Stretch="Fill"/>
 
-		<Image Grid.Row="1" Grid.Column="2" Source="images/GY_erdelyi_kopo.jpg" Visibility="Hidden" x:Name="kopo" Stretch="Fill"/>
+		<Image Uid="1" Grid.Row="1" Grid.Column="2" Source="images/GY_erdelyi_kopo.jpg" Visibility="Hidden" x:Name="kopo" Stretch="Fill"/>
 
-		<Image  Grid.Row="1" Grid.Column="3" Source="images/GY_francia_bulldog.jpg" Visibility="Hidden" x:Name="bulldog" Stretch="Fill"/>
+		<Image Uid="2" Grid.Row="1" Grid.Column="3" Source="images/GY_francia_bulldog.jpg" Visibility="Hidden" x:Name="bulldog" Stretch="Fill"/>
 
-		<Image Grid.Row="2" Source="images/GY_komondor.jpg" Visibility="Hidden" x:Name="komondor" Stretch="Fill"/>
+		<Image Uid="3" Grid.Row="2" Source="images/GY_komondor.jpg" Visibility="Hidden" x:Name="komondor" Stretch="Fill"/>
 
-		<Image  Grid.Row="2" Grid.Column="1" Source="images/GY_kuvasz.jpg" Visibility="Hidden" x:Name="kuvasz" Stretch="Fill"/>
+		<Image Uid="4" Grid.Row="2" Grid.Column="1" Source="images/GY_kuvasz.jpg" Visibility="Hidden" x:Name="kuvasz" Stretch="Fill"/>
 
-		<Image Grid.Row="2" Grid.Column="2" Source="images/GY_mudi.jpg" Visibility="Hidden" x:Name="mudi" Stretch="Fill"/>
+		<Image Uid="5" Grid.Row="2" Grid.Column="2" Source="images/GY_mudi.jpg" Visibility="Hidden" x:Name="mudi" Stretch="Fill"/>
 
-		<Image Grid.Row="2" Grid.Column="3" Source="images/GY_nemetjuhasz.jpg" Visibility="Hidden" x:Name="njuhasz" Stretch="Fill"/>
+		<Image Uid="6" Grid.Row="2" Grid.Column="3" Source="images/GY_nemetjuhasz.jpg" Visibility="Hidden" x:Name="njuhasz" Stretch="Fill"/>
 
-		<Image  Grid.Row="3" Source="images/GY_puli.jpg" Visibility="Hidden" x:Name="puli" Stretch="Fill"/>
+		<Image Uid="7" Grid.Row="3" Source="images/GY_puli.jpg" Visibility="Hidden" x:Name="puli" Stretch="Fill"/>
 
-		<Image Grid.Row="3" Grid.Column="1" Source="images/GY_pumi.jpg" Visibility="Hidden" x:Name="pumi" Stretch="Fill"/>
+		<Image Uid="8" Grid.Row="3" Grid.Column="1" Source="images/GY_pumi.jpg" Visibility="Hidden" x:Name="pumi" Stretch="Fill"/>
 
-		<Image Grid.Row="3" Grid.Column="2" Source="images/GY_rottweiler.jpg" Visibility="Hidden" x:Name="roti" Stretch="Fill"/>
+		<Image Uid="9" Grid.Row="3" Grid.Column="2" Source="images/GY_rottweiler.jpg" Visibility="Hidden" x:Name="roti" Stretch="Fill"/>
 
-		<Image Grid.Row="3" Grid.Column="3" Source="images/GY_vizsla.jpg" Visibility="Hidden" x:Name="vizsla" Stretch="Fill"/>
+		<Image Uid="10" Grid.Row="3" Grid.Column="3" Source="images/GY_vizsla.jpg" Visibility="Hidden" x:Name="vizsla" Stretch="Fill"/>
 
 	</Grid>
 </Page>

@@ -203,7 +203,7 @@ VALUES
 ('9','Melyik a leggyakoribb színe a puminak?','szürke','fehér','fekete','fakó'),
 ('9','Melyik tulajdonság NEM jellemző a pumira?','visszahúzódó','eleven','élénk','okos'),
 
-('10','Napjainkban mi a legfőbb foglalkoztatása az agárnak?','Sportversenyek','vadászat','őrzés','nyúlfogás'),
+('10','Napjainkban mi a legfőbb foglalkoztatása az agárnak?','sportversenyek','vadászat','őrzés','nyúlfogás'),
 ('10','Milyen gyorsan bír futni egy agár?','akár 60 km/h','45-50 km/h','30-40 km/h','60 km/h felett is'),
 ('10','Mi NEM jellemző az agárra?','tolakodó','agilis','kitartó','ragaszkodó'),
 
