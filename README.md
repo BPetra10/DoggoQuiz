@@ -1,2 +1,2 @@
 # DoggoQuiz
-WPF quiz application for hungarian and 3 foreign dogs.
+WPF quiz application and memory game for hungarian and 3 foreign dogs.
