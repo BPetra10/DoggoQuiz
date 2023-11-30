@@ -27,19 +27,18 @@ namespace Dogs.Notes
 
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
-            Page main = ((MainWindow)Application.Current.MainWindow).Main;
-            Application.Current.MainWindow.Content = main;
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
         }
 
+        readonly Page learn = new Learn.Learn();
         private void BackToLearning_Click(object sender, RoutedEventArgs e)
         {
-            Page learn = new Learn.Learn();
             Application.Current.MainWindow.Content = learn; 
         }
 
+        readonly Page game = new Game.GameMain();
         private void ToGame_Click(object sender, RoutedEventArgs e)
         {
-            Page game = new Game.GameMain();
             Application.Current.MainWindow.Content = game;
         }
     }

@@ -26,6 +26,7 @@ namespace Dogs.Login_Register
             InitializeComponent();
         }
 
+        readonly Page learn = new Learn.Learn();
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             if (username.Text.Length == 0)
@@ -56,7 +57,6 @@ namespace Dogs.Login_Register
                             if (id != 0)
                             {
                                 Application.Current.Resources.Add("UserId", id);
-                                Page learn = new Learn.Learn();
                                 Application.Current.MainWindow.Content = learn;
                             }
                         }
@@ -74,8 +74,7 @@ namespace Dogs.Login_Register
 
         private void ToRegister_Click(object sender, RoutedEventArgs e)
         {
-            Page register = new Register();
-            Application.Current.MainWindow.Content = register;
+            Application.Current.MainWindow.Content = new Register();
         }
     }
 }

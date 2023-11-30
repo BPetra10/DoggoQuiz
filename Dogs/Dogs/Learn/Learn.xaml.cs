@@ -26,7 +26,7 @@ namespace Dogs.Learn
         }
 
         private void ToNotePage(string Dogname)
-        {  
+        {
             var notes = new Notes.Notes();
             notes.dogName.Text = Dogname;
             
@@ -45,8 +45,7 @@ namespace Dogs.Learn
 
         private void House_Click(object sender, RoutedEventArgs e)
         {
-            Page wall = new WallOfGlory.WallOfGlory();
-            Application.Current.MainWindow.Content = wall;
+            Application.Current.MainWindow.Content = new WallOfGlory.WallOfGlory();
         }
 
         private void Komondor_Click(object sender, RoutedEventArgs e)
@@ -97,7 +96,6 @@ namespace Dogs.Learn
         private void Pumi_Click(object sender, RoutedEventArgs e)
         {
             ToNotePage("pumi");
-
         }
 
         private void Vizsla_Click(object sender, RoutedEventArgs e)

@@ -40,12 +40,12 @@ namespace Dogs.DB
         public List<Notes> GetNotes(string Dogname)
         {
             string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             List<Notes> notes = new List<Notes>();
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -70,7 +70,7 @@ namespace Dogs.DB
         public void InsertUser(string username, string password, string salt)
         {
             string data = $"INSERT INTO users(username,password,salt) VALUES('{username}','{password}','{salt}')";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
@@ -90,11 +90,11 @@ namespace Dogs.DB
         public bool CheckIfUserExist(string username)
         {
             string data = $"SELECT username FROM users WHERE username='{username}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Close();
@@ -117,11 +117,11 @@ namespace Dogs.DB
         public User? GetUserSaltAndPwd(string username)
         {
             string data = $"SELECT password,salt FROM users WHERE username='{username}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -152,12 +152,12 @@ namespace Dogs.DB
             {
                 data = $"SELECT question,correct,answer1,answer2,answer3 FROM questions INNER JOIN dogs ON questions.dog_id=dogs.dog_id WHERE dogs.dog_name IN({dogs})";
             }
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             List<Question> questions = new List<Question>();
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -181,12 +181,12 @@ namespace Dogs.DB
         public int GetUserId(string username)
         {
             string data = $"SELECT user_id FROM users WHERE username='{username}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             int userId = 0;//UserID will never become 0, so if something wrong we will know
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
@@ -211,11 +211,11 @@ namespace Dogs.DB
         public Points? GetUserPoint(int userId)
         {
             string data = $"SELECT user_id,points FROM points WHERE user_id='{userId}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
@@ -239,7 +239,7 @@ namespace Dogs.DB
         public void InsertOrUpdatePoints(int user_id, int points, bool isInsert) {
             if (isInsert) {
                 string data = $"INSERT INTO points(user_id,points) VALUES('{user_id}','{points}')";
-                MySqlCommand query = new MySqlCommand(data, connection);
+                using MySqlCommand query = new MySqlCommand(data, connection);
                 query.CommandTimeout = 60;
                 try
                 {
@@ -257,7 +257,7 @@ namespace Dogs.DB
             }
             else {
                 string data = $"UPDATE points SET points = {points} WHERE user_id={user_id}";
-                MySqlCommand query = new MySqlCommand(data, connection);
+                using MySqlCommand query = new MySqlCommand(data, connection);
                 query.CommandTimeout = 60;
                 try
                 {
@@ -280,11 +280,11 @@ namespace Dogs.DB
         public Images? GetUserImages(int userId)
         {
             string data = $"SELECT user_id,bought_images FROM images WHERE user_id='{userId}'";
-            MySqlCommand query = new MySqlCommand(data, connection);
+            using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
             try
             {
-                MySqlDataReader reader = query.ExecuteReader();
+                using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
@@ -307,7 +307,7 @@ namespace Dogs.DB
             if (isInsert)
             {
                 string data = $"INSERT INTO images(user_id,bought_images) VALUES('{user_id}','{bought_images}')";
-                MySqlCommand query = new MySqlCommand(data, connection);
+                using MySqlCommand query = new MySqlCommand(data, connection);
                 query.CommandTimeout = 60;
                 try
                 {
@@ -326,7 +326,7 @@ namespace Dogs.DB
             else
             {
                 string data = $"UPDATE images SET bought_images = '{bought_images}' WHERE user_id={user_id}";
-                MySqlCommand query = new MySqlCommand(data, connection);
+                using MySqlCommand query = new MySqlCommand(data, connection);
                 query.CommandTimeout = 60;
                 try
                 {

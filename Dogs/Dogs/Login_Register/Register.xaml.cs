@@ -26,6 +26,8 @@ namespace Dogs.Login_Register
         {
             InitializeComponent();
         }
+
+        readonly Page login = new Login();
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
             if (username.Text.Length == 0){
@@ -73,7 +75,6 @@ namespace Dogs.Login_Register
                                 var hashedpass = passwordHasher.Generate(password.Password, out var salt);
                                 database.InsertUser(username.Text, hashedpass, Convert.ToHexString(salt));
 
-                                Page login = new Login();
                                 Application.Current.MainWindow.Content = login;
                             }
                             else
@@ -88,7 +89,6 @@ namespace Dogs.Login_Register
 
         private void ToLogin_Click(object sender, RoutedEventArgs e)
         {
-            Page login = new Login();
             Application.Current.MainWindow.Content = login;
         }
     }

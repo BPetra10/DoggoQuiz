@@ -30,9 +30,9 @@ namespace Dogs.WallOfGlory
             images = new List<Image>() { agar, kopo, bulldog, komondor, kuvasz, mudi, njuhasz, puli, pumi, roti, vizsla };
         }
 
+        readonly Page learn = new Learn.Learn();
         private void BackToLearn_Click(object sender, RoutedEventArgs e)
         {
-            Page learn = new Learn.Learn();
             Application.Current.MainWindow.Content = learn;
         }
 

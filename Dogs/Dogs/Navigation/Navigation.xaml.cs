@@ -27,8 +27,7 @@ namespace Dogs.Navigation
 
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
-            Page main = ((MainWindow)Application.Current.MainWindow).Main;
-            Application.Current.MainWindow.Content = main;
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
         }
     }
 }

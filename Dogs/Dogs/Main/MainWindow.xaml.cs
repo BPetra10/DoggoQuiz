@@ -24,20 +24,22 @@ namespace Dogs
         {
             InitializeComponent();
         }
+
+        readonly Page registration = new Login_Register.Register();
         private void Learn_Click(object sender, RoutedEventArgs e)
         {
-            Page registration = new Login_Register.Register();
             Content = registration;
         }
+
+        readonly Page description = new Description.Description();
         private void Description_Click(object sender, RoutedEventArgs e)
         {
-            Page description = new Description.Description();
             Content = description;
         }
 
+        readonly Page nav = new Navigation.Navigation();
         private void Navigation_Click(object sender, RoutedEventArgs e)
         {
-            Page nav = new Navigation.Navigation();
             Content = nav;
         }
     }
