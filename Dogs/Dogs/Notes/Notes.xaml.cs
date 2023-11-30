@@ -36,10 +36,10 @@ namespace Dogs.Notes
             Application.Current.MainWindow.Content = learn; 
         }
 
-        readonly Page game = new Game.GameMain();
+        readonly Page gameSelect = new Game.GameMain();
         private void ToGame_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Content = game;
+            Application.Current.MainWindow.Content = gameSelect;
         }
     }
 }

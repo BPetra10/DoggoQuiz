@@ -7,83 +7,59 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GameMain">
-	<Grid>
-		<Grid.Background>
-			<ImageBrush ImageSource="question.jpg" Stretch="Fill"/>
-		</Grid.Background>
+	<Grid Background="#FF90B293">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="10*"/>
-			<ColumnDefinition Width="90*"/>
-			<ColumnDefinition Width="10*"/>
+			<ColumnDefinition Width="25*"/>
+			<ColumnDefinition Width="25*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="20*"/>
 			<RowDefinition Height="60*"/>
 			<RowDefinition Height="20*"/>
 		</Grid.RowDefinitions>
-		<Viewbox Grid.Column="1">
-			<TextBlock Foreground="White">Mely kutyá(k)ról szeretnél kérdéseket?</TextBlock>
+		<Viewbox Grid.ColumnSpan="2">
+			<TextBlock Margin="10,0,10,0">Mit szeretnél játszani?</TextBlock>
 		</Viewbox>
-		<Grid Grid.Row="1" Grid.Column="1" x:Name="CheckBoxGrid">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="190*"/>
-				<ColumnDefinition Width="220*"/>
-				<ColumnDefinition Width="120*"/>
-				<ColumnDefinition Width="120*"/>
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="10*"/>
-				<RowDefinition Height="10*"/>
-				<RowDefinition Height="10*"/>
-			</Grid.RowDefinitions>
+		<Button x:Name="ToMemory" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Click="ToMemory_Click">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="39*"/>
+					<RowDefinition Height="50*"/>
+					<RowDefinition Height="44*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="59*"/>
+					<ColumnDefinition Width="70*"/>
+					<ColumnDefinition Width="69*"/>
+				</Grid.ColumnDefinitions>
+				<Image Source="bone.png" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+				<Viewbox Grid.Column="1" Grid.Row="1">
+					<TextBlock Background="Transparent">Memória teszt</TextBlock>
+				</Viewbox>
+			</Grid>
+		</Button>
+		<Button x:Name="ToQuiz" Grid.Row="1" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="ToQuiz_Click">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="39*"/>
+					<RowDefinition Height="50*"/>
+					<RowDefinition Height="44*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="59*"/>
+					<ColumnDefinition Width="70*"/>
+					<ColumnDefinition Width="69*"/>
+				</Grid.ColumnDefinitions>
+				<Image Source="bone.png" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+				<Viewbox Grid.Column="1" Grid.Row="1">
+					<TextBlock Background="Transparent">Quiz kérdések</TextBlock>
+				</Viewbox>
+			</Grid>
+		</Button>
+		<Button x:Name="BackToLearn" Grid.Row="2"  Grid.ColumnSpan="2" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
 			<Viewbox>
-				<CheckBox Foreground="White" Margin="0,0,5,0">rottweiler</CheckBox>
+				<TextBlock Margin="10,0,10,0">Visszalépés a tanuló oldalra</TextBlock>
 			</Viewbox>
-			<Viewbox Grid.Column="1">
-				<CheckBox Foreground="White" Margin="0,0,5,0">németjuhász</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Column="2">
-				<CheckBox Foreground="White">mudi</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Column="3">
-				<CheckBox Foreground="White" Margin="3,0,0,0">agár</CheckBox>
-			</Viewbox>
-
-			<Viewbox Grid.Row="1">
-				<CheckBox Foreground="White" Margin="0,0,20,0">kuvasz</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="1">
-				<CheckBox Foreground="White" Margin="0,0,3,0">francia bulldog</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="2">
-				<CheckBox Foreground="White">pumi</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="3">
-				<CheckBox Foreground="White" Margin="3,0,0,0">vizsla</CheckBox>
-			</Viewbox>
-
-			<Viewbox Grid.Row="2">
-				<CheckBox Foreground="White" Margin="0,0,3,0">komondor</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="1">
-				<CheckBox Foreground="White" Margin="0,0,5,0">erdélyi kopó</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="2">
-				<CheckBox Foreground="White" Margin="0,0,5,0">puli</CheckBox>
-			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="3">
-				<CheckBox Foreground="White" Margin="3,0,0,0" x:Name="all" Checked="all_Checked" Unchecked="all_Unchecked">összes</CheckBox>
-			</Viewbox>
-		</Grid>
-		<Button x:Name="PlayGame" Grid.Row="3" Grid.Column="1" Margin="10" Click="PlayGame_Click">
-			<Viewbox>
-				<TextBlock>Mehet a játék!</TextBlock>
-			</Viewbox>
-			<Button.Resources>
-				<Style TargetType="Border">
-					<Setter Property="CornerRadius" Value="10"/>
-				</Style>
-			</Button.Resources>
 		</Button>
 	</Grid>
 </Page>

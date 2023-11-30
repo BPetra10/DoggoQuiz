@@ -10,6 +10,15 @@
   <ItemGroup>
     <None Remove="Description\paw1.png" />
     <None Remove="Description\paw2.png" />
+    <None Remove="Game\bone.png" />
+    <None Remove="Game\memory\agar.jpg" />
+    <None Remove="Game\memory\francia_bulldog.jpg" />
+    <None Remove="Game\memory\kuvasz.png" />
+    <None Remove="Game\memory\mopdog.jpg" />
+    <None Remove="Game\memory\mudi.jpg" />
+    <None Remove="Game\memory\puli.jpg" />
+    <None Remove="Game\memory\roti_nemet.jpg" />
+    <None Remove="Game\memory\vizsla.jpg" />
     <None Remove="Game\question.jpg" />
     <None Remove="Game\quizBack.png" />
     <None Remove="Learn\learn_img\agar.png" />
@@ -43,6 +52,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Game\bone.png" />
+    <Resource Include="Game\memory\agar.jpg" />
+    <Resource Include="Game\memory\francia_bulldog.jpg" />
+    <Resource Include="Game\memory\kuvasz.png" />
+    <Resource Include="Game\memory\mopdog.jpg" />
+    <Resource Include="Game\memory\mudi.jpg" />
+    <Resource Include="Game\memory\puli.jpg" />
+    <Resource Include="Game\memory\roti_nemet.jpg" />
+    <Resource Include="Game\memory\vizsla.jpg" />
     <Resource Include="Game\question.jpg" />
     <Resource Include="Game\quizBack.png" />
     <Resource Include="WallOfGlory\images\GY_mudi.jpg" />

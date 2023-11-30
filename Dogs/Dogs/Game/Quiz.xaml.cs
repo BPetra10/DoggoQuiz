@@ -48,6 +48,7 @@ namespace Dogs.Game
             }
         }
 
+        readonly Page shop = new WallOfGlory.WallOfGlory();
         void SaveAndRedirect() {
             database.ReOpenConn();
             int user_id = (int)Application.Current.Resources["UserId"];
@@ -66,7 +67,6 @@ namespace Dogs.Game
             }
             //Show actualpoints in messagebox and go to shop.
             MessageBox.Show("Helyes válaszok száma: "+collection.Count+"/"+points/10);
-            Page shop = new WallOfGlory.WallOfGlory();
             Application.Current.MainWindow.Content = shop;
         }
 
