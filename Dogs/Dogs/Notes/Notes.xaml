@@ -41,7 +41,7 @@
 		</Button>
 		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="20,20,20,20" Click="ToGame_Click">
 			<Viewbox>
-				<TextBlock>Játékra</TextBlock>
+				<TextBlock Padding="5">Játékra</TextBlock>
 			</Viewbox>
 		</Button>
 		<Viewbox Grid.Row="1" Grid.Column="2">
