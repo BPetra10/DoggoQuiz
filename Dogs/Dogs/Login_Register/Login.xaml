@@ -26,7 +26,7 @@
 				<TextBlock>Bejelentkezés</TextBlock>
 			</Viewbox>
 			<Viewbox Grid.Row="1" Grid.ColumnSpan="3">
-				<TextBlock x:Name="errorMsg" Foreground="Red">Hibaüzi, ha van!</TextBlock>
+			<TextBlock x:Name="errorMsg" Foreground="Red" Background="White" Margin="0,3,0,3">Add meg a bejelentkezési adataid.</TextBlock>
 			</Viewbox>
 		<Grid Background="Bisque" Grid.Column="1" Grid.Row="2">
 			<Grid.ColumnDefinitions>
@@ -37,14 +37,14 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="80*"/>
 				<RowDefinition Height="80*"/>
-				<RowDefinition Height="50*"/>
+				<RowDefinition Height="40*"/>
 			</Grid.RowDefinitions>
 			<Viewbox>
 				<Label>Felhasználónév:</Label>
 			</Viewbox>
 			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></TextBox>
 			<Viewbox Grid.Row="1">
-				<Label>Jelszó:</Label>
+				<Label Padding="20">Jelszó:</Label>
 			</Viewbox>
 			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></PasswordBox>
 			<Button x:Name="SignIn" Grid.Row="3" Grid.ColumnSpan="3" Margin="10" Click="SignIn_Click">

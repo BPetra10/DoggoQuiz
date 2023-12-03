@@ -91,5 +91,15 @@ namespace Dogs.Login_Register
         {
             Application.Current.MainWindow.Content = login;
         }
+
+        private void errorMsg_MouseEnter(object sender, MouseEventArgs e)
+        {
+            help.Visibility = Visibility.Visible;
+        }
+
+        private void errorMsg_MouseLeave(object sender, MouseEventArgs e)
+        {
+            help.Visibility = Visibility.Hidden;
+        }
     }
 }
