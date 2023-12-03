@@ -36,42 +36,43 @@
 				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
 			</Grid.RowDefinitions>
-			<Viewbox>
+			<!---Binding all text to the longest (francia bulldog) to get same font size. -->
+			<Viewbox MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,5,0">rottweiler</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Column="1">
+			<Viewbox Grid.Column="1" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,5,0">németjuhász</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Column="2">
+			<Viewbox Grid.Column="2" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White">mudi</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Column="3">
+			<Viewbox Grid.Column="3" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="3,0,0,0">agár</CheckBox>
 			</Viewbox>
 
-			<Viewbox Grid.Row="1">
+			<Viewbox Grid.Row="1" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,20,0">kuvasz</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="1">
-				<CheckBox Foreground="White" Margin="0,0,3,0">francia bulldog</CheckBox>
+			<Viewbox Grid.Row="1" Grid.Column="1" Name="vb">
+				<CheckBox Foreground="White" Margin="8,0,3,0">francia bulldog</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="2">
+			<Viewbox Grid.Row="1" Grid.Column="2" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White">pumi</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="1" Grid.Column="3">
+			<Viewbox Grid.Row="1" Grid.Column="3" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="3,0,0,0">vizsla</CheckBox>
 			</Viewbox>
 
-			<Viewbox Grid.Row="2">
+			<Viewbox Grid.Row="2" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,3,0">komondor</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="1">
+			<Viewbox Grid.Row="2" Grid.Column="1" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,5,0">erdélyi kopó</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="2">
+			<Viewbox Grid.Row="2" Grid.Column="2" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="0,0,5,0">puli</CheckBox>
 			</Viewbox>
-			<Viewbox Grid.Row="2" Grid.Column="3">
+			<Viewbox Grid.Row="2" Grid.Column="3" MaxHeight="{Binding ElementName=vb, Path=ActualHeight}">
 				<CheckBox Foreground="White" Margin="3,0,0,0" x:Name="all" Checked="all_Checked" Unchecked="all_Unchecked">összes</CheckBox>
 			</Viewbox>
 		</Grid>
