@@ -26,7 +26,7 @@ namespace Dogs
         }
 
         readonly Page registration = new Login_Register.Register();
-        private void Learn_Click(object sender, RoutedEventArgs e)
+        private void Reg_Click(object sender, RoutedEventArgs e)
         {
             Content = registration;
         }
@@ -41,6 +41,11 @@ namespace Dogs
         private void Navigation_Click(object sender, RoutedEventArgs e)
         {
             Content = nav;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

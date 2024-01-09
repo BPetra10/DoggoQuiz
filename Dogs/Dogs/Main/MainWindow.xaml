@@ -13,20 +13,21 @@
 				<RowDefinition Height="65*"/>
 				<RowDefinition Height="65*"/>
 				<RowDefinition Height="65*"/>
-				<RowDefinition Height="100*"/>
+				<RowDefinition Height="65*"/>
+				<RowDefinition Height="65*"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition/>
 				<ColumnDefinition Width="3*"/>
 			</Grid.ColumnDefinitions>
-			<Button x:Name="Learn" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Learn_Click">
+			<Button x:Name="Reg" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Reg_Click">
 				<Viewbox>
-					<TextBlock>Tanulás</TextBlock>
+					<TextBlock>Bejelentkezés</TextBlock>
 				</Viewbox>
 			</Button>
 			<Button x:Name="Description" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Description_Click">
 				<Viewbox>
-					<TextBlock>Leírás</TextBlock>
+					<TextBlock>Játék célja</TextBlock>
 				</Viewbox>
 			</Button>
 			<Button x:Name="Navigation" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Navigation_Click">
@@ -34,10 +35,15 @@
 					<TextBlock>Navigáció</TextBlock>
 				</Viewbox>
 			</Button>
+			<Button x:Name="Exit" Grid.Row="4" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Exit_Click">
+				<Viewbox>
+					<TextBlock>Kilépés</TextBlock>
+				</Viewbox>
+			</Button>
 			<Viewbox Grid.Column="0">
 				<Label>Kutyaiskola</Label>
 			</Viewbox>
-			<Image Source="KezdoKep.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Stretch="Fill"/>
+			<Image Source="KezdoKep.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6" Stretch="Fill"/>
 		</Grid>
 	</Page>
 </Window>
