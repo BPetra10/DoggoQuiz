@@ -22,13 +22,17 @@ namespace Dogs
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
-        readonly Page registration = new Login_Register.Register();
-        private void Reg_Click(object sender, RoutedEventArgs e)
+        readonly Page login = new Login_Register.Login();
+        readonly Page learn = new Learn.Learn();
+        private void Log_Click(object sender, RoutedEventArgs e)
         {
-            Content = registration;
+            if(Application.Current.Resources["UserId"]==null)
+                Content = login;
+            else
+                Content = learn;
         }
 
         readonly Page description = new Description.Description();

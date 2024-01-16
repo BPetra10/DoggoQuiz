@@ -25,7 +25,7 @@
 		</Viewbox>
 		<Button Grid.Column="2" x:Name="Raffle" Click="Raffle_Click" Margin="10">
 			<Viewbox>
-				<TextBlock>Sorsolás 100 pontért</TextBlock>
+				<TextBlock>Sorsolás 100 tallérért</TextBlock>
 			</Viewbox>
 			<Button.Resources>
 				<Style TargetType="Border">
@@ -33,12 +33,19 @@
 				</Style>
 			</Button.Resources>
 		</Button>
-		<Viewbox Grid.Column="3">
-			<TextBlock x:Name="points" Margin="5,0,5,0">Pontjaid: 0 </TextBlock>
-		</Viewbox>
+		<Grid Grid.Column="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="20*"/>
+			</Grid.ColumnDefinitions>
+			<Image Source="coin.png"/>
+			<Viewbox Grid.Column="1">
+				<TextBlock x:Name="points" Margin="5,0,5,0">Tallér: 0</TextBlock>
+			</Viewbox>
+		</Grid>
 		<Button x:Name="BackToLearn" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="10" Click="BackToLearn_Click">
 			<Viewbox>
-				<TextBlock TextAlignment="Center">Tanuló<LineBreak/>oldalra vissza</TextBlock>
+				<TextBlock TextAlignment="Center">Vissza a <LineBreak/> kutyákhoz</TextBlock>
 			</Viewbox>
 		</Button>
 		<Image Uid="0" Grid.Row="1" Grid.Column="1" Source="images/GY_agar.jpg" Visibility="Hidden" x:Name="agar" Stretch="Fill"/>

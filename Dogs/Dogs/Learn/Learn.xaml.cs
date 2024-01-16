@@ -102,5 +102,10 @@ namespace Dogs.Learn
         {
             ToNotePage("vizsla");
         }
+
+        private void ToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+        }
     }
 }

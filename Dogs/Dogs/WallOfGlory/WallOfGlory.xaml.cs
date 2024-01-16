@@ -88,7 +88,7 @@ namespace Dogs.WallOfGlory
         {
             if (userPoints != null)
             {
-                points.Text = "Pontjaid: " + userPoints.points.ToString();
+                points.Text = "Tallér: " + userPoints.points.ToString();
                 if (userPoints.points < 100)
                 {
                     Raffle.IsEnabled = false;

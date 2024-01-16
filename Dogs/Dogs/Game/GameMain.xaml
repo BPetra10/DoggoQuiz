@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Game"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GameMain">
@@ -15,51 +16,22 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="20*"/>
 			<RowDefinition Height="60*"/>
-			<RowDefinition Height="20*"/>
+			<RowDefinition Height="25*"/>
 		</Grid.RowDefinitions>
 		<Viewbox Grid.ColumnSpan="2">
 			<TextBlock Margin="10,0,10,0">Mit szeretnél játszani?</TextBlock>
 		</Viewbox>
 		<Button x:Name="ToMemory" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Click="ToMemory_Click">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="39*"/>
-					<RowDefinition Height="50*"/>
-					<RowDefinition Height="44*"/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="59*"/>
-					<ColumnDefinition Width="70*"/>
-					<ColumnDefinition Width="69*"/>
-				</Grid.ColumnDefinitions>
-				<Image Source="bone.png" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-				<Viewbox Grid.Column="1" Grid.Row="1">
-					<TextBlock Background="Transparent">Memória teszt</TextBlock>
-				</Viewbox>
-			</Grid>
+			<uc:BoneButton TextVal="Memória teszt"/>
 		</Button>
 		<Button x:Name="ToQuiz" Grid.Row="1" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="ToQuiz_Click">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="39*"/>
-					<RowDefinition Height="50*"/>
-					<RowDefinition Height="44*"/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="59*"/>
-					<ColumnDefinition Width="70*"/>
-					<ColumnDefinition Width="69*"/>
-				</Grid.ColumnDefinitions>
-				<Image Source="bone.png" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-				<Viewbox Grid.Column="1" Grid.Row="1">
-					<TextBlock Background="Transparent">Quiz kérdések</TextBlock>
-				</Viewbox>
-			</Grid>
+			<uc:BoneButton TextVal="Quiz kérdések"/>
 		</Button>
-		<Button x:Name="BackToLearn" Grid.Row="2"  Grid.ColumnSpan="2" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
-			<Viewbox>
-				<TextBlock Margin="10,0,10,0">Visszalépés a tanuló oldalra</TextBlock>
-			</Viewbox>
+		<Button x:Name="BackToLearn" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
+			<uc:BoneButton TextVal="Vissza" Margin="100,0,100,0"/>
+		</Button>
+		<Button x:Name="BackToMain" Grid.Row="2" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="BackToMain_Click">
+			<uc:BoneButton TextVal="Főmenü" Margin="100,0,100,0"/>
 		</Button>
 	</Grid>
 </Page>

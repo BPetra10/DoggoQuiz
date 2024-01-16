@@ -23,7 +23,7 @@
 			<RowDefinition Height="20*"></RowDefinition>
 		</Grid.RowDefinitions>
 		<Viewbox>
-			<TextBlock Margin="2" Background="Beige" Opacity="0.8" x:Name="scoreText">Megszereztett pontok: 0</TextBlock>
+			<TextBlock Margin="2" Background="Beige" Opacity="0.8" x:Name="scoreText">Megszerzett tallérok: 0</TextBlock>
 		</Viewbox>
 		<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
 			<TextBlock  Background="Beige" Opacity="0.8" Margin="3,0,3,0" x:Name="question">

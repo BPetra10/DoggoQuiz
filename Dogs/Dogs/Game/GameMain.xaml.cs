@@ -45,5 +45,9 @@ namespace Dogs.Game
         {
             Application.Current.MainWindow.Content = learn;
         }
+        private void BackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+        }
     }
 }

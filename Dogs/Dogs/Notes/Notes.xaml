@@ -36,7 +36,7 @@
 		</Viewbox>
 		<Button x:Name="BackToLearning" Grid.Row="3" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="10,10,20,10" Click="BackToLearning_Click">
 			<Viewbox>
-				<TextBlock>Tanuló <LineBreak/> oldalra</TextBlock>
+				<TextBlock TextAlignment="Center">Vissza a <LineBreak/> kutyákhoz</TextBlock>
 			</Viewbox>
 		</Button>
 		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="20,20,20,20" Click="ToGame_Click">

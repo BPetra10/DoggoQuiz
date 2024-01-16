@@ -136,7 +136,7 @@ namespace Dogs.Game
                 if (senderBtnTB.Text == collection[questionIndex].correct)
                 {
                     points += 10;
-                    scoreText.Text = "Megszerzett pontok: " + points;
+                    scoreText.Text = "Megszerzett tallérok: " + points;
                     senderBtnTB.Foreground = new SolidColorBrush(Colors.Green);
                 }
                 else 

@@ -32,12 +32,14 @@
     <None Remove="Learn\learn_img\park.jpg" />
     <None Remove="Learn\learn_img\puli.png" />
     <None Remove="Learn\learn_img\pumi.png" />
+    <None Remove="Learn\learn_img\rainbow.png" />
     <None Remove="Learn\learn_img\rottweiler.png" />
     <None Remove="Learn\learn_img\vizsla.png" />
     <None Remove="Login_Register\paws.jpg" />
     <None Remove="Main\KezdoKep.png" />
     <None Remove="Navigation\Nav.png" />
     <None Remove="Notes\notes.png" />
+    <None Remove="WallOfGlory\coin.png" />
     <None Remove="WallOfGlory\images\GY_agar.jpg" />
     <None Remove="WallOfGlory\images\GY_erdelyi_kopo.jpg" />
     <None Remove="WallOfGlory\images\GY_francia_bulldog.jpg" />
@@ -52,7 +54,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Game\bone.png" />
+    <Resource Include="Learn\learn_img\rainbow.png" />
+    <Resource Include="MyBtn\bone.png" />
     <Resource Include="Game\memory\agar.jpg" />
     <Resource Include="Game\memory\francia_bulldog.jpg" />
     <Resource Include="Game\memory\kuvasz.png" />
@@ -63,6 +66,7 @@
     <Resource Include="Game\memory\vizsla.jpg" />
     <Resource Include="Game\question.jpg" />
     <Resource Include="Game\quizBack.png" />
+    <Resource Include="WallOfGlory\coin.png" />
     <Resource Include="WallOfGlory\images\GY_mudi.jpg" />
   </ItemGroup>
 

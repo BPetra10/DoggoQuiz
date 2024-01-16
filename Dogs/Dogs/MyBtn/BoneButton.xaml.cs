@@ -13,21 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dogs.Description
+namespace Dogs.MyBtn
 {
     /// <summary>
-    /// Interaction logic for Description.xaml
+    /// Interaction logic for BoneButton.xaml
     /// </summary>
-    public partial class Description : Page
+    public partial class BoneButton : UserControl
     {
-        public Description()
+        public string TextVal { get; set; }
+        public BoneButton()
         {
             InitializeComponent();
-        }
-
-        private void BackToMain_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+            DataContext = this;
+            TextVal = "";
         }
     }
 }

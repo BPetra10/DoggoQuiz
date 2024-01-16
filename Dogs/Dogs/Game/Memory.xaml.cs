@@ -181,7 +181,7 @@ namespace Dogs.Game
                 database.ReOpenConn();
                 database.InsertOrUpdatePoints(user_id, points, true);
             }
-            MessageBox.Show("Szerzett pontok: " + points.ToString());
+            MessageBox.Show("Szerzett tallérok: " + points.ToString());
             Application.Current.MainWindow.Content = shop;
         }
 

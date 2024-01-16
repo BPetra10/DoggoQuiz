@@ -26,17 +26,23 @@ namespace Dogs.Login_Register
             InitializeComponent();
         }
 
+        void ErrMsgShow(string errText) {
+            textLogin.SetValue(Grid.RowSpanProperty,1);
+            errMsgBox.Visibility = Visibility.Visible;
+            errorMsg.Text = errText;
+        }
+
         readonly Page learn = new Learn.Learn();
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             if (username.Text.Length == 0)
             {
-                errorMsg.Text = "Nem adtál meg felhasználónevet!";
+                ErrMsgShow("Nem adtál meg felhasználónevet!");
                 username.Focus();
             }
             else if (password.Password.Length == 0)
             {
-                errorMsg.Text = "Nem adtál meg jelszót!";
+                ErrMsgShow("Nem adtál meg jelszót!");
             }
             else {
                 PasswordHasher passwordHasher = new PasswordHasher();
@@ -62,12 +68,12 @@ namespace Dogs.Login_Register
                         }
                         else
                         {
-                            errorMsg.Text = "Nem megfelelő felhasználónév vagy jelszó!";
+                            ErrMsgShow("Nem megfelelő felhasználónév vagy jelszó!");
                         }
                     }
                 }
                 else {
-                    errorMsg.Text = "Ez a felhasználó nem létezik az adatbázisban!";
+                    ErrMsgShow("Ez a felhasználó nem létezik az adatbázisban!");
                 }
             }
         }

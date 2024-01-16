@@ -49,7 +49,7 @@
 			</Button>
 			<Button x:Name="ToLearn" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Margin="10" Click="ToLearn_Click">
 				<Viewbox>
-					<TextBlock FontWeight="Bold">Tanulóoldalra vissza</TextBlock>
+					<TextBlock TextAlignment="Center">Vissza a <LineBreak/> kutyaválasztáshoz</TextBlock>
 				</Viewbox>
 			</Button>
 		</Grid>

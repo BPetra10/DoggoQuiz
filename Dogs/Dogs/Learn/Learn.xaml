@@ -26,6 +26,14 @@
 			<ImageBrush ImageSource="learn_img/park.jpg" Stretch="Fill"/>
 		</Grid.Background>
 
+		<Button x:Name="ToMain" Background="{x:Null}" BorderThickness="0" Grid.ColumnSpan="2" Grid.Column="2" Click="ToMain_Click">
+			<Button.Template>
+				<ControlTemplate>
+					<Image Source="learn_img/rainbow.png"></Image>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
+		
 		<Button x:Name="Komondor" Grid.Row="2" Click="Komondor_Click">
 			<Button.Template>
 				<ControlTemplate>
