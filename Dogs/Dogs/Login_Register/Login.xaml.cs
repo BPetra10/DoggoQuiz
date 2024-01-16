@@ -82,5 +82,10 @@ namespace Dogs.Login_Register
         {
             Application.Current.MainWindow.Content = new Register();
         }
+
+        private void BackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+        }
     }
 }

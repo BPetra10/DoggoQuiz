@@ -101,5 +101,10 @@ namespace Dogs.Login_Register
         {
             help.Visibility = Visibility.Hidden;
         }
+
+        private void BackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+        }
     }
 }

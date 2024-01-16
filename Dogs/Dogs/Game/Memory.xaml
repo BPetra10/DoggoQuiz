@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Game"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Memory">
@@ -28,29 +29,20 @@
 		</Grid>
 		<Grid Grid.Column="1">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="80*"/>
-				<RowDefinition Height="60*"/>
-				<RowDefinition Height="60*"/>
+				<RowDefinition Height="40*"/>
 				<RowDefinition Height="60*"/>
 				<RowDefinition Height="80*"/>
+				<RowDefinition Height="80*"/>
+				<RowDefinition Height="40*"/>
 			</Grid.RowDefinitions>
 			<Viewbox Grid.Row="1">
 				<Label x:Name="time">Eltelt idő:</Label>
 			</Viewbox>
-			<Button x:Name="StartGame" Grid.Row="2" Margin="10" Click="StartGame_Click">
-				<Viewbox>
-					<TextBlock>Mehet a játék!</TextBlock>
-				</Viewbox>
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="10"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="StartGame" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="StartGame_Click">
+				<uc:BoneButton TextVal="Játékra  fel!"/>
 			</Button>
-			<Button x:Name="ToLearn" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Margin="10" Click="ToLearn_Click">
-				<Viewbox>
-					<TextBlock TextAlignment="Center">Vissza a <LineBreak/> kutyaválasztáshoz</TextBlock>
-				</Viewbox>
+			<Button x:Name="BackToLearn" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
+				<uc:BoneButton TextVal="Kutyaválasztás"/>
 			</Button>
 		</Grid>
 	</Grid>

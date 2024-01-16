@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Login_Register"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Login">
@@ -11,8 +12,8 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="11*"/>
 			<RowDefinition Height="9*"/>
-			<RowDefinition Height="53*"/>
-			<RowDefinition Height="17*"/>
+			<RowDefinition Height="49*"/>
+			<RowDefinition Height="21*"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="45*"/>
@@ -35,9 +36,9 @@
 				<ColumnDefinition Width="21*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="80*"/>
-				<RowDefinition Height="80*"/>
-				<RowDefinition Height="40*"/>
+				<RowDefinition Height="12*"/>
+				<RowDefinition Height="12*"/>
+				<RowDefinition Height="11*"/>
 			</Grid.RowDefinitions>
 			<Viewbox>
 				<Label>Felhasználónév:</Label>
@@ -47,27 +48,16 @@
 				<Label Padding="25">Jelszó:</Label>
 			</Viewbox>
 			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></PasswordBox>
-			<Button x:Name="SignIn" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,10,10,20" Click="SignIn_Click">
-				<Viewbox>
-					<TextBlock>Bejelentkezés</TextBlock>
-				</Viewbox>
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="10"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="SignIn" Grid.Row="2" Grid.ColumnSpan="3" Margin="65,0,65,0" Background="{x:Null}" BorderThickness="0" Click="SignIn_Click">
+				<uc:BoneButton TextVal="Bejelentkezés"/>
 			</Button>
 		</Grid>
-		<Button x:Name="ToRegister" Grid.Row="3" Grid.Column="2" Background="{x:Null}" BorderThickness="0" Margin="5,5,5,5" Click="ToRegister_Click">
-			<Viewbox>
-				<TextBlock>Regisztrál</TextBlock>
-			</Viewbox>
+		<Button x:Name="ToRegister" Grid.Row="3" Grid.Column="2" Background="{x:Null}" BorderThickness="0" Click="ToRegister_Click">
+			<uc:BoneButton TextVal="Regisztrál"/>
 		</Button>
 
-		<Button Grid.Row="3" x:Name="ToMain" Margin="20,0,20,0" Background="{x:Null}" BorderThickness="0">
-			<Viewbox>
-				<TextBlock>Főmenü</TextBlock>
-			</Viewbox>
+		<Button Grid.Row="3" x:Name="BackToMain" Background="{x:Null}" BorderThickness="0" Click="BackToMain_Click">
+			<uc:BoneButton TextVal="Főmenü"/>
 		</Button>
 
 

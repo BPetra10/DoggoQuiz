@@ -219,7 +219,7 @@ namespace Dogs.Game
         }
 
         readonly Page learn = new Learn.Learn();
-        private void ToLearn_Click(object sender, RoutedEventArgs e)
+        private void BackToLearn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = learn;
         }

@@ -92,5 +92,10 @@ namespace Dogs.Game
             CheckUncheck(true);
         }
 
+        readonly Page learn = new Learn.Learn();
+        private void BackToLearn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = learn;
+        }
     }
 }

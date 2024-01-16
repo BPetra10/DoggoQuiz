@@ -4,46 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dogs"
+		xmlns:uc="clr-namespace:Dogs.MyBtn"
         mc:Ignorable="d"
         Title="Kutyák" Height="450" Width="800">
 	<Page x:Name="Main">
 		<Grid Background="#FF90B293">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="200*"/>
-				<RowDefinition Height="65*"/>
-				<RowDefinition Height="65*"/>
-				<RowDefinition Height="65*"/>
-				<RowDefinition Height="65*"/>
-				<RowDefinition Height="65*"/>
+				<RowDefinition Height="100*"/>
+				<RowDefinition Height="90*"/>
+				<RowDefinition Height="90*"/>
+				<RowDefinition Height="90*"/>
+				<RowDefinition Height="90*"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="1.5*"/>
+				<ColumnDefinition Width="4*"/>
 			</Grid.ColumnDefinitions>
-			<Button x:Name="Log" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Log_Click">
-				<Viewbox>
-					<TextBlock>Bejelentkezés</TextBlock>
-				</Viewbox>
+			<Button x:Name="Log" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Click="Log_Click">
+				<uc:BoneButton TextVal="Belépés"/>
 			</Button>
-			<Button x:Name="Description" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Description_Click">
-				<Viewbox>
-					<TextBlock>Játék célja</TextBlock>
-				</Viewbox>
+			<Button x:Name="Description" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="Description_Click">
+				<uc:BoneButton TextVal="Játék célja"/>
 			</Button>
-			<Button x:Name="Navigation" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Navigation_Click">
-				<Viewbox>
-					<TextBlock>Navigáció</TextBlock>
-				</Viewbox>
+			<Button x:Name="Navigation" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Click="Navigation_Click">
+				<uc:BoneButton TextVal="Navigáció"/>
 			</Button>
-			<Button x:Name="Exit" Grid.Row="4" Background="{x:Null}" BorderThickness="0" Padding="5" Click="Exit_Click">
-				<Viewbox>
-					<TextBlock>Kilépés</TextBlock>
-				</Viewbox>
+			<Button x:Name="Exit" Grid.Row="4" Background="{x:Null}" BorderThickness="0" Click="Exit_Click">
+				<uc:BoneButton TextVal="Kilépés"/>
 			</Button>
 			<Viewbox Grid.Column="0">
 				<Label>Kutyaiskola</Label>
 			</Viewbox>
-			<Image Source="KezdoKep.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6" Stretch="Fill"/>
+			<Image Source="KezdoKep.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" Stretch="Fill"/>
 		</Grid>
 	</Page>
 </Window>

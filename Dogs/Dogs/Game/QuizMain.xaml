@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Game"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizMain">
@@ -76,15 +77,20 @@
 				<CheckBox Foreground="White" Margin="3,0,0,0" x:Name="all" Checked="all_Checked" Unchecked="all_Unchecked">összes</CheckBox>
 			</Viewbox>
 		</Grid>
-		<Button x:Name="PlayGame" Grid.Row="3" Grid.Column="1" Margin="10" Click="PlayGame_Click">
-			<Viewbox>
-				<TextBlock>Mehet a játék!</TextBlock>
-			</Viewbox>
-			<Button.Resources>
-				<Style TargetType="Border">
-					<Setter Property="CornerRadius" Value="10"/>
-				</Style>
-			</Button.Resources>
-		</Button>
+		<Grid Grid.Row="3" Grid.Column="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.8*"/>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="0.5*"/>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="0.8*"/>
+			</Grid.ColumnDefinitions>
+			<Button x:Name="PlayGame" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="PlayGame_Click">
+				<uc:BoneButton TextVal="Játéka  fel!"/>
+			</Button>
+			<Button x:Name="BackToLearn" Grid.Column="3" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click" >
+				<uc:BoneButton TextVal="Kutyaválasztás"/>
+			</Button>
+		</Grid>
 	</Grid>
 </Page>

@@ -28,7 +28,7 @@
 			<uc:BoneButton TextVal="Quiz kérdések"/>
 		</Button>
 		<Button x:Name="BackToLearn" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
-			<uc:BoneButton TextVal="Vissza" Margin="100,0,100,0"/>
+			<uc:BoneButton TextVal="Kutyák" Margin="100,0,100,0"/>
 		</Button>
 		<Button x:Name="BackToMain" Grid.Row="2" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="BackToMain_Click">
 			<uc:BoneButton TextVal="Főmenü" Margin="100,0,100,0"/>

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Notes"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Notes">
@@ -34,15 +35,11 @@
 		<Viewbox Grid.Row="1" Grid.Column="1" Margin="10,0,20,0">
 			<TextBlock x:Name="dogName"></TextBlock>
 		</Viewbox>
-		<Button x:Name="BackToLearning" Grid.Row="3" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="10,10,20,10" Click="BackToLearning_Click">
-			<Viewbox>
-				<TextBlock TextAlignment="Center">Vissza a <LineBreak/> kutyákhoz</TextBlock>
-			</Viewbox>
+		<Button x:Name="BackToLearning" Grid.Row="3" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="0,0,20,0" Click="BackToLearning_Click">
+			<uc:BoneButton TextVal="Vissza"/>
 		</Button>
-		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="20,20,20,20" Click="ToGame_Click">
-			<Viewbox>
-				<TextBlock Padding="5">Játékra</TextBlock>
-			</Viewbox>
+		<Button x:Name="ToGame" Grid.Row="5" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Margin="0,0,20,0" Click="ToGame_Click">
+			<uc:BoneButton TextVal="Játék"/>
 		</Button>
 		<Viewbox Grid.Row="1" Grid.Column="2">
 			<TextBlock x:Name="tb1" MaxWidth="600" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Center" TextAlignment="Justify">

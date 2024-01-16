@@ -68,7 +68,6 @@ namespace Dogs.WallOfGlory
                         database.InsertOrUpdateImages(user_id, uidOfRndImg, true);
                     }
                 }
-                else { Raffle.IsEnabled = false; }
 
                 //Showing actual point and images after buying something:
                 database.ReOpenConn();
@@ -89,10 +88,6 @@ namespace Dogs.WallOfGlory
             if (userPoints != null)
             {
                 points.Text = "Tallér: " + userPoints.points.ToString();
-                if (userPoints.points < 100)
-                {
-                    Raffle.IsEnabled = false;
-                }
             }
         }
         private void LoadImages()
@@ -115,7 +110,6 @@ namespace Dogs.WallOfGlory
                                 images[i].Visibility = Visibility.Visible;
                                 images.RemoveAt(i);
                             }
-                            
                         }
                     }
                 }
