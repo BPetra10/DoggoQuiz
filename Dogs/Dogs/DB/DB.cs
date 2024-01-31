@@ -276,21 +276,25 @@ namespace Dogs.DB
         }
 
         /*Similarly to GetUserPoints we check if the DB images table has the userId given in the parameter, 
-        * if yes, giving back an Image class instance, else returning null. */
-        public Images? GetUserImages(int userId)
+        * if yes, giving back an Image list. */
+        public List<Images> GetUserImages(int userId)
         {
             string data = $"SELECT user_id,bought_images FROM images WHERE user_id='{userId}'";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.CommandTimeout = 60;
+            List<Images> images = new List<Images>();
             try
             {
                 using MySqlDataReader reader = query.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    reader.Read();
-                    return new Images(reader);
+                    while (reader.Read())
+                    {
+                        images.Add(new Images(reader));
+                    }
                 }
                 reader.Close();
+                connection.Close();
             }
             catch (Exception e)
             {
@@ -300,13 +304,11 @@ namespace Dogs.DB
             {
                 connection.Close();
             }
-            return null;
+            return images;
         }
 
-        public void InsertOrUpdateImages(int user_id, string bought_images, bool isInsert) {
-            if (isInsert)
-            {
-                string data = $"INSERT INTO images(user_id,bought_images) VALUES('{user_id}','{bought_images}')";
+        public void InsertImages(int user_id, int bought_image) {
+                string data = $"INSERT INTO images(user_id,bought_images) VALUES('{user_id}','{bought_image}')";
                 using MySqlCommand query = new MySqlCommand(data, connection);
                 query.CommandTimeout = 60;
                 try
@@ -322,26 +324,40 @@ namespace Dogs.DB
                 {
                     connection.Close();
                 }
-            }
-            else
+        }
+
+        public List<Score> GetScores()
+        {
+            string data = "SELECT username,COUNT(bought_images) as img, points FROM points " +
+                "LEFT JOIN users ON points.user_id = users.user_id LEFT JOIN images " +
+                "ON users.user_id = images.user_id " +
+                "GROUP BY username ORDER BY img DESC, points DESC LIMIT 5";
+
+            using MySqlCommand query = new MySqlCommand(data, connection);
+            query.CommandTimeout = 60;
+            List<Score> score = new List<Score>();
+            try
             {
-                string data = $"UPDATE images SET bought_images = '{bought_images}' WHERE user_id={user_id}";
-                using MySqlCommand query = new MySqlCommand(data, connection);
-                query.CommandTimeout = 60;
-                try
+                using MySqlDataReader reader = query.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    query.ExecuteNonQuery();
-                    connection.Close();
+                    while (reader.Read())
+                    {
+                        score.Add(new Score(reader));
+                    }
                 }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Adatbázis hiba: " + e.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
+                reader.Close();
+                connection.Close();
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Adatbázis hiba: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return score;
         }
     }
 }

@@ -51,5 +51,12 @@ namespace Dogs
         {
             Close();
         }
+
+        readonly Page res = new Result.Result();
+
+        private void Result_Click(object sender, RoutedEventArgs e)
+        {
+            Content = res; 
+        }
     }
 }

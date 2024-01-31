@@ -39,6 +39,9 @@
     <None Remove="Main\KezdoKep.png" />
     <None Remove="Navigation\Nav.png" />
     <None Remove="Notes\notes.png" />
+    <None Remove="Result\first.png" />
+    <None Remove="Result\sec.png" />
+    <None Remove="Result\third.png" />
     <None Remove="WallOfGlory\coin.png" />
     <None Remove="WallOfGlory\images\GY_agar.jpg" />
     <None Remove="WallOfGlory\images\GY_erdelyi_kopo.jpg" />
@@ -66,6 +69,9 @@
     <Resource Include="Game\memory\vizsla.jpg" />
     <Resource Include="Game\question.jpg" />
     <Resource Include="Game\quizBack.png" />
+    <Resource Include="Result\first.png" />
+    <Resource Include="Result\sec.png" />
+    <Resource Include="Result\third.png" />
     <Resource Include="WallOfGlory\coin.png" />
     <Resource Include="WallOfGlory\images\GY_mudi.jpg" />
   </ItemGroup>

@@ -18,7 +18,7 @@ FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
 CREATE TABLE `dogapp`.`images` 
 (`id` INT NOT NULL AUTO_INCREMENT , 
 `user_id` INT NOT NULL , 
-`bought_images` VARCHAR(200) NOT NULL , 
+`bought_images` INT NOT NULL , 
 PRIMARY KEY (`id`),
 FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
 ) ENGINE = InnoDB;

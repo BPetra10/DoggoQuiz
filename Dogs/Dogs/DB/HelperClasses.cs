@@ -91,11 +91,25 @@ namespace Dogs.DB
 
     class Images {
         public int user_id { get; }
-        public string images { get; }
+        public int images { get; }
         public Images(MySqlDataReader reader)
         {
             user_id = reader.GetInt32(0);
-            images = reader.GetString(1);
+            images = reader.GetInt32(1);
+        }
+    }
+
+    class Score
+    {
+        public string username { get; }
+        public int images { get; }
+        public int points { get; }
+
+        public Score(MySqlDataReader reader)
+        {
+            username = reader.GetString(0);
+            images = reader.GetInt32(1);
+            points = reader.GetInt32(2);
         }
     }
 }

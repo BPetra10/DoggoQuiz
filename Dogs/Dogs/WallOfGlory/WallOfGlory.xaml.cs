@@ -50,23 +50,13 @@ namespace Dogs.WallOfGlory
                     var randNum = rnd.Next(0, images.Count);
                     images[randNum].Visibility = Visibility.Visible;
                     //We have to get the unique identifier of the image, because we will have to store which picture the user have 
-                    string uidOfRndImg = images[randNum].Uid;
+                    int uidOfRndImg = Int32.Parse(images[randNum].Uid);
 
                     database.ReOpenConn();
                     database.InsertOrUpdatePoints(user_id, userPoints.points - 100, false);
 
                     database.ReOpenConn();
-                    var userImages = database.GetUserImages(user_id);
-
-                    database.ReOpenConn();
-                    if (userImages != null)
-                    {
-                        database.InsertOrUpdateImages(user_id, userImages.images + "," + uidOfRndImg, false);
-                    }
-                    else
-                    {
-                        database.InsertOrUpdateImages(user_id, uidOfRndImg, true);
-                    }
+                    database.InsertImages(user_id, uidOfRndImg);
                 }
 
                 //Showing actual point and images after buying something:
@@ -94,18 +84,19 @@ namespace Dogs.WallOfGlory
         {
             database.ReOpenConn();
             var allImage = database.GetUserImages(user_id);
-            List<string> imgsSplit;
+
+            allImage = allImage.OrderBy(x=>x.images).ToList();
+
             //We get the user bought images, and we remove them from our local list, and making them visible in the shop.
             if (allImage != null)
             {
-                imgsSplit = allImage.images.Split(",").OrderBy(x=>x).ToList();
-                if (imgsSplit.Count != 11)
+                if (allImage.Count != 11)
                 {
                     for (int i = 0; i < images.Count; i++)
                     {
-                        for (int j = 0; j < imgsSplit.Count; j++)
+                        for (int j = 0; j < allImage.Count; j++)
                         {
-                            if (images[i].Uid == imgsSplit[j])
+                            if (Int32.Parse(images[i].Uid) == allImage[j].images)
                             {
                                 images[i].Visibility = Visibility.Visible;
                                 images.RemoveAt(i);
@@ -116,8 +107,8 @@ namespace Dogs.WallOfGlory
                 else
                 {
                     images.ForEach(x => x.Visibility = Visibility.Visible);
-                    /*Collapsing Raffle button, and changing raffleCongrats ViewBox columspan from 2 to 3
-                     and changing text from raffletext to a congratulation text, and setting its color to crimson. */
+                    //Collapsing Raffle button, and changing raffleCongrats ViewBox columspan from 2 to 3
+                    // and changing text from raffletext to a congratulation text, and setting its color to crimson.
                     Raffle.Visibility = Visibility.Collapsed;
                     Grid.SetColumnSpan(raffleCongrats,3);
                     var text = (TextBlock)raffleCongrats.Child;
