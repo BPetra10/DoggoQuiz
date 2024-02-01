@@ -32,13 +32,13 @@ namespace Dogs.Result
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            scoreboard.Children.Clear();
             DB.DB db = new DB.DB();
             var scores = db.GetScores();
             if (scores.Count != 0)
             {
                 for (int i = 0; i < scores.Count; i++)
                 {
-
                     for (int j = 0; j < 3; j++)
                     {
                         Viewbox vb = new Viewbox();
@@ -51,8 +51,8 @@ namespace Dogs.Result
                             tb.Text = scores[i].points.ToString();
                         vb.Child = tb;
                         vb.Margin = new Thickness(10);
-                        Grid.SetRow(vb, i + 2);
-                        Grid.SetColumn(vb, j + 2);
+                        Grid.SetRow(vb, i);
+                        Grid.SetColumn(vb, j);
                         scoreboard.Children.Add(vb);
                     }
                 }

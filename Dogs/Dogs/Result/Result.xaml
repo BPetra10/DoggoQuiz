@@ -45,8 +45,8 @@
 				<ColumnDefinition Width="77*"/>
 				<ColumnDefinition Width="25*"/>
 			</Grid.ColumnDefinitions>
-			<Border Grid.Column="1" Grid.Row="1" BorderBrush="#FF000000" BorderThickness="4" CornerRadius="10">
-				<Grid x:Name="scoreboard">
+			<Border Grid.Column="1" Grid.Row="1" BorderBrush="Beige" Background="Bisque" BorderThickness="4" CornerRadius="10">
+				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="10*"/>
 						<RowDefinition Height="30*"/>
@@ -92,6 +92,20 @@
 					<Viewbox Grid.Column="1" Grid.Row="6">
 						<TextBlock Padding="5">5</TextBlock>
 					</Viewbox>
+					<Grid x:Name="scoreboard" Grid.Row="2" Grid.Column="2" Grid.RowSpan="5" Grid.ColumnSpan="3">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50*"/>
+							<RowDefinition Height="50*"/>
+							<RowDefinition Height="50*"/>
+							<RowDefinition Height="35*"/>
+							<RowDefinition Height="35*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="30*"/>
+							<ColumnDefinition Width="20*"/>
+							<ColumnDefinition Width="20*"/>
+						</Grid.ColumnDefinitions>
+					</Grid>
 				</Grid>
 			</Border>
 		</Grid>
