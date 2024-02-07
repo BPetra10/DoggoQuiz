@@ -18,6 +18,7 @@
     <None Remove="Game\catch\dogleft.png" />
     <None Remove="Game\catch\dogright.png" />
     <None Remove="Game\catch\grass.jpg" />
+    <None Remove="Game\catch\park.jpg" />
     <None Remove="Game\memory\agar.jpg" />
     <None Remove="Game\memory\francia_bulldog.jpg" />
     <None Remove="Game\memory\kuvasz.png" />
@@ -74,6 +75,7 @@
     <Resource Include="Game\catch\dogleft.png" />
     <Resource Include="Game\catch\dogright.png" />
     <Resource Include="Game\catch\grass.jpg" />
+    <Resource Include="Game\catch\park.jpg" />
     <Resource Include="Learn\learn_img\rainbow.png" />
     <Resource Include="MyBtn\bone.png" />
     <Resource Include="Game\memory\agar.jpg" />

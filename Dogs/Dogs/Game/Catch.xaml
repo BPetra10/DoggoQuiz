@@ -32,8 +32,11 @@
 			<uc:BoneButton TextVal="Kutyák"/>
 		</Button>
 
-		<Canvas Name="Field" Grid.Row="1"  Grid.ColumnSpan="4" Background="LightGray" Focusable="True" MouseMove="Field_MouseMove" SizeChanged="Field_SizeChanged">
+		<Canvas Name="Field" Grid.Row="1"  Grid.ColumnSpan="4" Focusable="True" MouseMove="Field_MouseMove" SizeChanged="Field_SizeChanged">
 			<Rectangle Name="dog" Width="100" Height="100" Canvas.Left="10" Canvas.Top="460" Fill="Blue" Stretch="Fill"/>
+			<Canvas.Background>
+				<ImageBrush ImageSource="catch/park.jpg"/>
+			</Canvas.Background>
 		</Canvas>
 	</Grid>
 </Page>
