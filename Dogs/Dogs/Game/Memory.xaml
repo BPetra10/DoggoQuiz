@@ -39,10 +39,10 @@
 				<Label x:Name="time">Eltelt idő:</Label>
 			</Viewbox>
 			<Button x:Name="StartGame" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="StartGame_Click">
-				<uc:BoneButton TextVal="Játékra  fel!"/>
+				<uc:BoneButton TextVal="Játék"/>
 			</Button>
 			<Button x:Name="BackToLearn" Grid.Row="3" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
-				<uc:BoneButton TextVal="Kutyaválasztás"/>
+				<uc:BoneButton TextVal="Kutyák"/>
 			</Button>
 		</Grid>
 	</Grid>

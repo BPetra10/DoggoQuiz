@@ -10,15 +10,16 @@
       Title="GameMain">
 	<Grid Background="#FF90B293">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="25*"/>
-			<ColumnDefinition Width="25*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="20*"/>
 			<RowDefinition Height="60*"/>
 			<RowDefinition Height="25*"/>
 		</Grid.RowDefinitions>
-		<Viewbox Grid.ColumnSpan="2">
+		<Viewbox Grid.ColumnSpan="3">
 			<TextBlock Margin="10,0,10,0">Mit szeretnél játszani?</TextBlock>
 		</Viewbox>
 		<Button x:Name="ToMemory" Grid.Row="1" Background="{x:Null}" BorderThickness="0" Click="ToMemory_Click">
@@ -27,11 +28,20 @@
 		<Button x:Name="ToQuiz" Grid.Row="1" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="ToQuiz_Click">
 			<uc:BoneButton TextVal="Quiz kérdések"/>
 		</Button>
-		<Button x:Name="BackToLearn" Grid.Row="2" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
-			<uc:BoneButton TextVal="Kutyák" Margin="100,0,100,0"/>
+		<Button x:Name="ToCatch" Grid.Row="1" Grid.Column="2" Background="{x:Null}" BorderThickness="0" Click="ToCatch_Click" >
+			<uc:BoneButton TextVal="Elkapós játék"/>
 		</Button>
-		<Button x:Name="BackToMain" Grid.Row="2" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="BackToMain_Click">
-			<uc:BoneButton TextVal="Főmenü" Margin="100,0,100,0"/>
-		</Button>
+		<Grid Grid.Row="2" Grid.ColumnSpan="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Button x:Name="BackToLearn" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
+				<uc:BoneButton TextVal="Kutyák" Margin="100,0,100,0"/>
+			</Button>
+			<Button x:Name="BackToMain" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="BackToMain_Click">
+				<uc:BoneButton TextVal="Főmenü" Margin="100,0,100,0"/>
+			</Button>
+		</Grid>
 	</Grid>
 </Page>

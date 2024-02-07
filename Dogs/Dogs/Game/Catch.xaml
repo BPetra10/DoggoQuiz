@@ -1,0 +1,39 @@
+﻿<Page x:Class="Dogs.Game.Catch"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Dogs.Game"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="Catch" Loaded="Page_Loaded">
+	<Grid Background="Beige">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="150*"/>
+			<RowDefinition Height="650*"/>
+		</Grid.RowDefinitions>
+		<Viewbox>
+			<Label Name="scorelbl">Elkapott: 0</Label>
+		</Viewbox>
+		<Viewbox Grid.Column="1">
+			<Label Name="missedlbl" Grid.Column="1">Elvétett: 0</Label>
+		</Viewbox>
+		<Button x:Name="GameStart" Grid.Column="2" Background="{x:Null}" BorderThickness="0" Click="GameRestart_Click">
+			<uc:BoneButton TextVal="Újra"/>
+		</Button>
+		<Button x:Name="BackToLearn" Grid.Column="3" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click">
+			<uc:BoneButton TextVal="Kutyák"/>
+		</Button>
+
+		<Canvas Name="Field" Grid.Row="1"  Grid.ColumnSpan="4" Background="LightGray" Focusable="True" MouseMove="Field_MouseMove" SizeChanged="Field_SizeChanged">
+			<Rectangle Name="dog" Width="100" Height="100" Canvas.Left="10" Canvas.Top="460" Fill="Blue" Stretch="Fill"/>
+		</Canvas>
+	</Grid>
+</Page>

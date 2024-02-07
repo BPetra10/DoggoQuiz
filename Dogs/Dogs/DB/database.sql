@@ -1,4 +1,4 @@
-CREATE DATABASE `dogapp` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+CREATE DATABASE `dogapp` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 
 CREATE TABLE `dogapp`.`users` 
 (`user_id` INT NOT NULL AUTO_INCREMENT , 

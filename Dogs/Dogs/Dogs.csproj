@@ -11,6 +11,13 @@
     <None Remove="Description\paw1.png" />
     <None Remove="Description\paw2.png" />
     <None Remove="Game\bone.png" />
+    <None Remove="Game\catch\ball.png" />
+    <None Remove="Game\catch\ball2.png" />
+    <None Remove="Game\catch\bone.png" />
+    <None Remove="Game\catch\bone2.png" />
+    <None Remove="Game\catch\dogleft.png" />
+    <None Remove="Game\catch\dogright.png" />
+    <None Remove="Game\catch\grass.jpg" />
     <None Remove="Game\memory\agar.jpg" />
     <None Remove="Game\memory\francia_bulldog.jpg" />
     <None Remove="Game\memory\kuvasz.png" />
@@ -57,6 +64,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Game\catch\bone.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Game\catch\ball.png" />
+    <Resource Include="Game\catch\ball2.png" />
+    <Resource Include="Game\catch\bone2.png" />
+    <Resource Include="Game\catch\dogleft.png" />
+    <Resource Include="Game\catch\dogright.png" />
+    <Resource Include="Game\catch\grass.jpg" />
     <Resource Include="Learn\learn_img\rainbow.png" />
     <Resource Include="MyBtn\bone.png" />
     <Resource Include="Game\memory\agar.jpg" />

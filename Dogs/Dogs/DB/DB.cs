@@ -98,7 +98,7 @@ namespace Dogs.DB
                 if (reader.HasRows)
                 {
                     reader.Close();
-                    return true;
+                    return true;    
                 }
             }
             catch (Exception e)

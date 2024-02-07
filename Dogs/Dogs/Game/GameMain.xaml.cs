@@ -49,5 +49,11 @@ namespace Dogs.Game
         {
             Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
         }
+
+        readonly Page catchItem = new Catch();
+        private void ToCatch_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = catchItem;
+        }
     }
 }

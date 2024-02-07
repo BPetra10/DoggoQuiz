@@ -86,10 +86,10 @@
 				<ColumnDefinition Width="0.8*"/>
 			</Grid.ColumnDefinitions>
 			<Button x:Name="PlayGame" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="PlayGame_Click">
-				<uc:BoneButton TextVal="Játéka  fel!"/>
+				<uc:BoneButton TextVal="Játék"/>
 			</Button>
 			<Button x:Name="BackToLearn" Grid.Column="3" Background="{x:Null}" BorderThickness="0" Click="BackToLearn_Click" >
-				<uc:BoneButton TextVal="Kutyaválasztás"/>
+				<uc:BoneButton TextVal="Kutyák"/>
 			</Button>
 		</Grid>
 	</Grid>
