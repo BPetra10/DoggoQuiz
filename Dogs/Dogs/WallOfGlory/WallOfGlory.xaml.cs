@@ -1,5 +1,6 @@
 ﻿using Dogs.DB;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,24 +86,27 @@ namespace Dogs.WallOfGlory
             database.ReOpenConn();
             var allImage = database.GetUserImages(user_id);
 
-            allImage = allImage.OrderBy(x=>x.images).ToList();
-
+            if (allImage.Count != 0)
             //We get the user bought images, and we remove them from our local list, and making them visible in the shop.
-            if (allImage != null)
             {
                 if (allImage.Count != 11)
                 {
-                    for (int i = 0; i < images.Count; i++)
+                    List<int> userImgNum = allImage.Select(x => x.images).ToList();
+
+                    List<int> imagesNum = images.Select(x => x.Uid).Select(int.Parse).ToList();
+
+                    for (int i = 0; i < imagesNum.Count; i++)
                     {
-                        for (int j = 0; j < allImage.Count; j++)
+                        for (int j = 0; j < userImgNum.Count; j++)
                         {
-                            if (Int32.Parse(images[i].Uid) == allImage[j].images)
+                            if (imagesNum[i] == userImgNum[j])
                             {
                                 images[i].Visibility = Visibility.Visible;
-                                images.RemoveAt(i);
                             }
                         }
                     }
+
+                    images.RemoveAll(item => userImgNum.Any(item2 => Int32.Parse(item.Uid) == item2));
                 }
                 else
                 {
@@ -110,13 +114,12 @@ namespace Dogs.WallOfGlory
                     //Collapsing Raffle button, and changing raffleCongrats ViewBox columspan from 2 to 3
                     // and changing text from raffletext to a congratulation text, and setting its color to crimson.
                     Raffle.Visibility = Visibility.Collapsed;
-                    Grid.SetColumnSpan(raffleCongrats,3);
+                    Grid.SetColumnSpan(raffleCongrats, 3);
                     var text = (TextBlock)raffleCongrats.Child;
                     text.Text = "Gratulálok, mindent kigyűjtöttél!";
                     text.Foreground = new SolidColorBrush(Colors.Crimson);
                 }
             }
         }
-
     }
 }

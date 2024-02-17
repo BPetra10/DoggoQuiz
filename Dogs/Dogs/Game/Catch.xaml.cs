@@ -233,6 +233,7 @@ namespace Dogs.Game
         readonly Page learn = new Learn.Learn();
         private void BackToLearn_Click(object sender, RoutedEventArgs e)
         {
+            gameTimer.Tick -= Game;
             Application.Current.MainWindow.Content = learn;
         }
 

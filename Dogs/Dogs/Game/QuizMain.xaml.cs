@@ -57,7 +57,7 @@ namespace Dogs.Game
             foreach (var checkbox in SelectedCheckBoxes)
             {
                 if (checkbox.Content.ToString() != "összes")
-                    checkedItems.Append("'" + checkbox.Content + "',");
+                    checkedItems.Append(checkbox.Content + ",");
             }
 
             if (checkedItems.Length > 0)

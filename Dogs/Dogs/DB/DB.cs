@@ -36,11 +36,11 @@ namespace Dogs.DB
             connection.Open();
         }
 
-        //Fact: ${} string interpolation
         public List<Notes> GetNotes(string Dogname)
         {
-            string data = $"SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name='{Dogname}'";
+            string data = "SELECT notes FROM notes INNER JOIN dogs ON notes.dog_id=dogs.dog_id WHERE dog_name=@Dogname";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@Dogname", Dogname);
             query.CommandTimeout = 60;
             List<Notes> notes = new List<Notes>();
             try
@@ -69,8 +69,11 @@ namespace Dogs.DB
 
         public void InsertUser(string username, string password, string salt)
         {
-            string data = $"INSERT INTO users(username,password,salt) VALUES('{username}','{password}','{salt}')";
+            string data = "INSERT INTO users(username,password,salt) VALUES(@username,@password,@salt)";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@username", username);
+            query.Parameters.AddWithValue("@password", password);
+            query.Parameters.AddWithValue("@salt", salt);
             query.CommandTimeout = 60;
             try
             {
@@ -89,8 +92,9 @@ namespace Dogs.DB
 
         public bool CheckIfUserExist(string username)
         {
-            string data = $"SELECT username FROM users WHERE username='{username}'";
+            string data = "SELECT username FROM users WHERE username=@username";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@username", username);
             query.CommandTimeout = 60;
             try
             {
@@ -116,8 +120,9 @@ namespace Dogs.DB
          but if the user does not exist, this will give back null, so User can be nullable. */
         public User? GetUserSaltAndPwd(string username)
         {
-            string data = $"SELECT password,salt FROM users WHERE username='{username}'";
+            string data = $"SELECT password,salt FROM users WHERE username=@username";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@username", username);
             query.CommandTimeout = 60;
             try
             {
@@ -144,15 +149,40 @@ namespace Dogs.DB
         public List<Question> GetQuestions(string dogs)
         {
             string data;
+            MySqlCommand query;
             if (dogs == "*")
             {
                 data = "SELECT question,correct,answer1,answer2,answer3 FROM questions";
+                query = new MySqlCommand(data, connection);
             }
             else
             {
-                data = $"SELECT question,correct,answer1,answer2,answer3 FROM questions INNER JOIN dogs ON questions.dog_id=dogs.dog_id WHERE dogs.dog_name IN({dogs})";
+                query = new MySqlCommand();
+                /*Why we have to use array?
+                    Cause with parameters, the parameters automatically getting "", and in IN()
+                    this will not work: IN("dog1,dog2,dog3");
+                    Because we want this: IN("dog1","dog2","dog3");
+                    So we have to make a parameter for every dog it own.
+                 */
+
+                //Adding an array of parameters to MySqlCommand, to use with IN()
+                string[] alldogs = dogs.Split(',');//array of strings which we want to add as a parameter
+                var parameters = new string[alldogs.Length];
+                /* An array cannot be added as a parameter so we need to loop through it.
+                 Each item in the array will be a MySqlParameter, and we use the params array 
+                to our Commandtext, to add to IN()*/
+                for (int i = 0; i < alldogs.Length; i++)
+                {
+                    parameters[i] = string.Format("@dogs{0}", i);
+                    query.Parameters.AddWithValue(parameters[i], alldogs[i]);
+                }
+
+                query.CommandText = string.Format("SELECT question,correct,answer1,answer2,answer3 " +
+                    "FROM questions INNER JOIN dogs ON questions.dog_id=dogs.dog_id " +
+                    "WHERE dogs.dog_name IN ({0})", string.Join(", ", parameters));
+                query.Connection = connection;
             }
-            using MySqlCommand query = new MySqlCommand(data, connection);
+
             query.CommandTimeout = 60;
             List<Question> questions = new List<Question>();
             try
@@ -180,8 +210,9 @@ namespace Dogs.DB
         }
         public int GetUserId(string username)
         {
-            string data = $"SELECT user_id FROM users WHERE username='{username}'";
+            string data = $"SELECT user_id FROM users WHERE username=@username";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@username", username);
             query.CommandTimeout = 60;
             int userId = 0;//UserID will never become 0, so if something wrong we will know
             try
@@ -210,8 +241,9 @@ namespace Dogs.DB
          * if yes, giving back a Points class instance, else returning null. */
         public Points? GetUserPoint(int userId)
         {
-            string data = $"SELECT user_id,points FROM points WHERE user_id='{userId}'";
+            string data = $"SELECT user_id,points FROM points WHERE user_id=@userId";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@userId", userId);
             query.CommandTimeout = 60;
             try
             {
@@ -238,8 +270,10 @@ namespace Dogs.DB
         Else, we will insert their points to DB.*/
         public void InsertOrUpdatePoints(int user_id, int points, bool isInsert) {
             if (isInsert) {
-                string data = $"INSERT INTO points(user_id,points) VALUES('{user_id}','{points}')";
+                string data = $"INSERT INTO points(user_id,points) VALUES(@user_id,@points)";
                 using MySqlCommand query = new MySqlCommand(data, connection);
+                query.Parameters.AddWithValue("@user_id", user_id);
+                query.Parameters.AddWithValue("@points", points);
                 query.CommandTimeout = 60;
                 try
                 {
@@ -256,8 +290,10 @@ namespace Dogs.DB
                 }
             }
             else {
-                string data = $"UPDATE points SET points = {points} WHERE user_id={user_id}";
+                string data = $"UPDATE points SET points = @points WHERE user_id=@user_id";
                 using MySqlCommand query = new MySqlCommand(data, connection);
+                query.Parameters.AddWithValue("@user_id", user_id);
+                query.Parameters.AddWithValue("@points", points);
                 query.CommandTimeout = 60;
                 try
                 {
@@ -279,8 +315,9 @@ namespace Dogs.DB
         * if yes, giving back an Image list. */
         public List<Images> GetUserImages(int userId)
         {
-            string data = $"SELECT user_id,bought_images FROM images WHERE user_id='{userId}'";
+            string data = $"SELECT user_id,bought_images FROM images WHERE user_id=@userId";
             using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@userId", userId);
             query.CommandTimeout = 60;
             List<Images> images = new List<Images>();
             try
@@ -308,9 +345,11 @@ namespace Dogs.DB
         }
 
         public void InsertImages(int user_id, int bought_image) {
-                string data = $"INSERT INTO images(user_id,bought_images) VALUES('{user_id}','{bought_image}')";
-                using MySqlCommand query = new MySqlCommand(data, connection);
-                query.CommandTimeout = 60;
+            string data = $"INSERT INTO images(user_id,bought_images) VALUES(@user_id,@bought_image)";
+            using MySqlCommand query = new MySqlCommand(data, connection);
+            query.Parameters.AddWithValue("@user_id", user_id);
+            query.Parameters.AddWithValue("@bought_image", bought_image);
+            query.CommandTimeout = 60;
                 try
                 {
                     query.ExecuteNonQuery();
