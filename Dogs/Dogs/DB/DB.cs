@@ -120,7 +120,7 @@ namespace Dogs.DB
          but if the user does not exist, this will give back null, so User can be nullable. */
         public User? GetUserSaltAndPwd(string username)
         {
-            string data = $"SELECT password,salt FROM users WHERE username=@username";
+            string data = "SELECT password,salt FROM users WHERE username=@username";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.Parameters.AddWithValue("@username", username);
             query.CommandTimeout = 60;
@@ -210,7 +210,7 @@ namespace Dogs.DB
         }
         public int GetUserId(string username)
         {
-            string data = $"SELECT user_id FROM users WHERE username=@username";
+            string data = "SELECT user_id FROM users WHERE username=@username";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.Parameters.AddWithValue("@username", username);
             query.CommandTimeout = 60;
@@ -241,7 +241,7 @@ namespace Dogs.DB
          * if yes, giving back a Points class instance, else returning null. */
         public Points? GetUserPoint(int userId)
         {
-            string data = $"SELECT user_id,points FROM points WHERE user_id=@userId";
+            string data = "SELECT user_id,points FROM points WHERE user_id=@userId";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.Parameters.AddWithValue("@userId", userId);
             query.CommandTimeout = 60;
@@ -270,7 +270,7 @@ namespace Dogs.DB
         Else, we will insert their points to DB.*/
         public void InsertOrUpdatePoints(int user_id, int points, bool isInsert) {
             if (isInsert) {
-                string data = $"INSERT INTO points(user_id,points) VALUES(@user_id,@points)";
+                string data = "INSERT INTO points(user_id,points) VALUES(@user_id,@points)";
                 using MySqlCommand query = new MySqlCommand(data, connection);
                 query.Parameters.AddWithValue("@user_id", user_id);
                 query.Parameters.AddWithValue("@points", points);
@@ -290,7 +290,7 @@ namespace Dogs.DB
                 }
             }
             else {
-                string data = $"UPDATE points SET points = @points WHERE user_id=@user_id";
+                string data = "UPDATE points SET points = @points WHERE user_id=@user_id";
                 using MySqlCommand query = new MySqlCommand(data, connection);
                 query.Parameters.AddWithValue("@user_id", user_id);
                 query.Parameters.AddWithValue("@points", points);
@@ -315,7 +315,7 @@ namespace Dogs.DB
         * if yes, giving back an Image list. */
         public List<Images> GetUserImages(int userId)
         {
-            string data = $"SELECT user_id,bought_images FROM images WHERE user_id=@userId";
+            string data = "SELECT user_id,bought_images FROM images WHERE user_id=@userId";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.Parameters.AddWithValue("@userId", userId);
             query.CommandTimeout = 60;
@@ -345,7 +345,7 @@ namespace Dogs.DB
         }
 
         public void InsertImages(int user_id, int bought_image) {
-            string data = $"INSERT INTO images(user_id,bought_images) VALUES(@user_id,@bought_image)";
+            string data = "INSERT INTO images(user_id,bought_images) VALUES(@user_id,@bought_image)";
             using MySqlCommand query = new MySqlCommand(data, connection);
             query.Parameters.AddWithValue("@user_id", user_id);
             query.Parameters.AddWithValue("@bought_image", bought_image);
