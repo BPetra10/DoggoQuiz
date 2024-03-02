@@ -25,7 +25,37 @@
 		<Viewbox>
 			<TextBlock Margin="2" Background="Beige" Opacity="0.8" x:Name="scoreText">Megszerzett tallérok: 0</TextBlock>
 		</Viewbox>
-		<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
+		<Grid Grid.Column="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Button x:Name="Help" Background="Beige" Margin="10,10,10,10" Click="Help_Click">
+				<Viewbox>
+					<TextBlock>
+							Segítség
+					</TextBlock>
+				</Viewbox>
+				<Button.Resources>
+					<Style TargetType="Border">
+						<Setter Property="CornerRadius" Value="10"/>
+					</Style>
+				</Button.Resources>
+			</Button>
+			<Button x:Name="Quit" Grid.Column="1" Background="Beige" Margin="10,10,10,10" Click="Quit_Click">
+				<Viewbox>
+					<TextBlock>
+						Kilépés
+					</TextBlock>
+				</Viewbox>
+				<Button.Resources>
+					<Style TargetType="Border">
+						<Setter Property="CornerRadius" Value="10"/>
+					</Style>
+				</Button.Resources>
+			</Button>
+		</Grid>
+			<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
 			<TextBlock  Background="Beige" Opacity="0.8" Margin="3,0,3,0" x:Name="question">
 					Random kérdés illusztrálás?
 			</TextBlock>

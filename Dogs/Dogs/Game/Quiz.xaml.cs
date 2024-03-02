@@ -26,6 +26,10 @@ namespace Dogs.Game
     {
         List<Question> collection;
         DB.DB database = new DB.DB();
+        
+        int removeCounter = 3;
+
+        List<TextBlock> answerList;
         public Quiz(string selectedDogs)
         {
             InitializeComponent();
@@ -33,6 +37,8 @@ namespace Dogs.Game
             //Getting selected dogs questions and answers from DB, and Shuffling its sequence.
             collection = database.GetQuestions(selectedDogs);
             Shuffle(collection);
+
+            answerList = new List<TextBlock>() { ans1, ans2, ans3, ans4 };
         }
 
         static Random rnd = new Random();
@@ -123,7 +129,6 @@ namespace Dogs.Game
         {
             //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
             Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = false;
-            List<TextBlock> answerList = new List<TextBlock>() {ans1,ans2,ans3,ans4};
 
             //We know that the sender is a Button, and this button always has a viewbox inside.
             //Inside the viewbox, there is only one child always, and that is a TextBlock.
@@ -148,6 +153,68 @@ namespace Dogs.Game
                 questionIndex++;
                 DelayQuestion();
             }
+        }
+
+        /*The user will get 3 help, which they can use in questions:
+         They can use all the help in only one question, basically skipping that,
+         or just use one help in one question. 
+         */
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            if (removeCounter != 0)
+            {
+                Viewbox Btn1VB = (Viewbox)Btn1.Content;
+                TextBlock Btn1TB = (TextBlock)Btn1VB.Child;
+                Viewbox Btn2VB = (Viewbox)Btn2.Content;
+                TextBlock Btn2TB = (TextBlock)Btn2VB.Child;
+                Viewbox Btn3VB = (Viewbox)Btn3.Content;
+                TextBlock Btn3TB = (TextBlock)Btn3VB.Child;
+                Viewbox Btn4VB = (Viewbox)Btn4.Content;
+                TextBlock Btn4TB = (TextBlock)Btn4VB.Child;
+
+                for (int i = 0; i < answerList.Count; i++)
+                {
+                    if (answerList[i].Text == collection[questionIndex].correct)
+                        answerList.RemoveAt(i);
+                }
+
+                int removeBtn = rnd.Next(0, answerList.Count);
+                
+                if (answerList[removeBtn] == Btn1TB)
+                {
+                    ans1.Foreground = new SolidColorBrush(Colors.DarkRed);
+                    Btn1.IsEnabled = false;
+                    answerList.RemoveAt(removeBtn);
+                    removeCounter--;
+                }
+                else if (answerList[removeBtn] == Btn2TB)
+                {
+                    ans2.Foreground = new SolidColorBrush(Colors.DarkRed);
+                    Btn2.IsEnabled = false;
+                    answerList.RemoveAt(removeBtn);
+                    removeCounter--;
+                }
+                else if (answerList[removeBtn] == Btn3TB)
+                {
+                    ans3.Foreground = new SolidColorBrush(Colors.DarkRed);
+                    Btn3.IsEnabled = false;
+                    answerList.RemoveAt(removeBtn);
+                    removeCounter--;
+                }
+                else if (answerList[removeBtn] == Btn4TB)
+                {
+                    ans4.Foreground = new SolidColorBrush(Colors.DarkRed);
+                    Btn4.IsEnabled = false;
+                    answerList.RemoveAt(removeBtn);
+                    removeCounter--;
+                }
+            }
+        }
+
+        readonly Page learn = new Learn.Learn();
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Content = learn;
         }
     }
 }
