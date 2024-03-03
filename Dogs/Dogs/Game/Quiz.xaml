@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Dogs.Game"
+	  xmlns:uc="clr-namespace:Dogs.MyBtn"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Quiz">
@@ -17,7 +18,7 @@
 			<ColumnDefinition Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="10*"></RowDefinition>
+			<RowDefinition Height="15*"></RowDefinition>
 			<RowDefinition Height="30*"/>
 			<RowDefinition Height="20*"></RowDefinition>
 			<RowDefinition Height="20*"></RowDefinition>
@@ -30,29 +31,11 @@
 				<ColumnDefinition/>
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<Button x:Name="Help" Background="Beige" Margin="10,10,10,10" Click="Help_Click">
-				<Viewbox>
-					<TextBlock>
-							Segítség
-					</TextBlock>
-				</Viewbox>
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="10"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="Help" Background="{x:Null}" BorderThickness="0" Click="Help_Click" Margin="10,0,10,0">
+				<uc:BoneButton TextVal="Segítség"/>
 			</Button>
-			<Button x:Name="Quit" Grid.Column="1" Background="Beige" Margin="10,10,10,10" Click="Quit_Click">
-				<Viewbox>
-					<TextBlock>
-						Kilépés
-					</TextBlock>
-				</Viewbox>
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="10"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="Quit" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="Quit_Click" Margin="10,0,10,0">
+				<uc:BoneButton TextVal="Kilépés"/>
 			</Button>
 		</Grid>
 			<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
