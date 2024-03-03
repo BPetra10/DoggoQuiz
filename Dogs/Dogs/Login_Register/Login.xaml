@@ -43,11 +43,11 @@
 			<Viewbox>
 				<Label>Felhasználónév:</Label>
 			</Viewbox>
-			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></TextBox>
+			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="12"></TextBox>
 			<Viewbox Grid.Row="1">
 				<Label Padding="25">Jelszó:</Label>
 			</Viewbox>
-			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0"></PasswordBox>
+			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="16"></PasswordBox>
 			<Button x:Name="SignIn" Grid.Row="2" Grid.ColumnSpan="3" Margin="65,0,65,0" Background="{x:Null}" BorderThickness="0" Click="SignIn_Click">
 				<uc:BoneButton TextVal="Bejelentkezés"/>
 			</Button>
