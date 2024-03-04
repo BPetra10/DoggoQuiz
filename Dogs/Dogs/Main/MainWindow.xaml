@@ -31,7 +31,7 @@
 				<uc:BoneButton TextVal="Navigáció"/>
 			</Button>
 			<Button x:Name="Result" Grid.Row="4" Background="{x:Null}" BorderThickness="0" Click="Result_Click">
-				<uc:BoneButton TextVal="Eredmények"/>
+				<uc:BoneButton TextVal="Toplista"/>
 			</Button>
 			<Button x:Name="Exit" Grid.Row="5" Background="{x:Null}" BorderThickness="0" Click="Exit_Click">
 				<uc:BoneButton TextVal="Kilépés"/>
