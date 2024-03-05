@@ -35,7 +35,7 @@
 				<uc:BoneButton TextVal="Segítség"/>
 			</Button>
 			<Button x:Name="Quit" Grid.Column="1" Background="{x:Null}" BorderThickness="0" Click="Quit_Click" Margin="10,0,10,0">
-				<uc:BoneButton TextVal="Kilépés"/>
+				<uc:BoneButton TextVal="Kutyák"/>
 			</Button>
 		</Grid>
 			<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
