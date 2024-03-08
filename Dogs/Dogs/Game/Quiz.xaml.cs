@@ -81,7 +81,7 @@ namespace Dogs.Game
         {
             if (questionIndex != collection.Count)
             {
-                Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = Help.IsEnabled = true;
+                Btn1.IsHitTestVisible = Btn2.IsHitTestVisible = Btn3.IsHitTestVisible = Btn4.IsHitTestVisible = Help.IsHitTestVisible = true;
                 ans1.Foreground = new SolidColorBrush(Colors.Black);
                 ans2.Foreground = new SolidColorBrush(Colors.Black);
                 ans3.Foreground = new SolidColorBrush(Colors.Black);
@@ -128,7 +128,7 @@ namespace Dogs.Game
         private void Btn(object sender, RoutedEventArgs e)
         {
             //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
-            Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = Help.IsEnabled = false;
+            Btn1.IsHitTestVisible = Btn2.IsHitTestVisible = Btn3.IsHitTestVisible = Btn4.IsHitTestVisible = Help.IsHitTestVisible = false;
 
             //We know that the sender is a Button, and this button always has a viewbox inside.
             //Inside the viewbox, there is only one child always, and that is a TextBlock.
@@ -183,28 +183,28 @@ namespace Dogs.Game
                 if (answerList[removeBtn] == Btn1TB)
                 {
                     ans1.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn1.IsEnabled = false;
+                    Btn1.IsHitTestVisible = false;
                     answerList.RemoveAt(removeBtn);
                     removeCounter--;
                 }
                 else if (answerList[removeBtn] == Btn2TB)
                 {
                     ans2.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn2.IsEnabled = false;
+                    Btn2.IsHitTestVisible = false;
                     answerList.RemoveAt(removeBtn);
                     removeCounter--;
                 }
                 else if (answerList[removeBtn] == Btn3TB)
                 {
                     ans3.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn3.IsEnabled = false;
+                    Btn3.IsHitTestVisible = false;
                     answerList.RemoveAt(removeBtn);
                     removeCounter--;
                 }
                 else if (answerList[removeBtn] == Btn4TB)
                 {
                     ans4.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn4.IsEnabled = false;
+                    Btn4.IsHitTestVisible = false;
                     answerList.RemoveAt(removeBtn);
                     removeCounter--;
                 }

@@ -38,7 +38,7 @@
 				<uc:BoneButton TextVal="Kutyák"/>
 			</Button>
 		</Grid>
-			<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
+		<Viewbox Grid.ColumnSpan="2" VerticalAlignment="Center" Grid.Row="1">
 			<TextBlock  Background="Beige" Opacity="0.8" Margin="3,0,3,0" x:Name="question">
 					Random kérdés illusztrálás?
 			</TextBlock>
