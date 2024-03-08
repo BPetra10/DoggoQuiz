@@ -81,7 +81,7 @@ namespace Dogs.Game
         {
             if (questionIndex != collection.Count)
             {
-                Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = true;
+                Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = Help.IsEnabled = true;
                 ans1.Foreground = new SolidColorBrush(Colors.Black);
                 ans2.Foreground = new SolidColorBrush(Colors.Black);
                 ans3.Foreground = new SolidColorBrush(Colors.Black);
@@ -128,7 +128,7 @@ namespace Dogs.Game
         private void Btn(object sender, RoutedEventArgs e)
         {
             //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
-            Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = false;
+            Btn1.IsEnabled = Btn2.IsEnabled = Btn3.IsEnabled = Btn4.IsEnabled = Help.IsEnabled = false;
 
             //We know that the sender is a Button, and this button always has a viewbox inside.
             //Inside the viewbox, there is only one child always, and that is a TextBlock.
