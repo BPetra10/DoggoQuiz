@@ -80,7 +80,7 @@ namespace Dogs.Game
             pairs = 0;
             Random r = new Random();
             List<byte> nums = new List<byte>() { };
-            //Storing pairs nums: 1 1 2 2 3 3 ... 8 8
+            //Storing pairs nums: 0 0 1 1 2 2 3 3 ... 7 7
             for (byte i = 0; i < Math.Pow(4, 2) / 2; i++)
             {
                 nums.Add(i);
