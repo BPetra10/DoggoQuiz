@@ -34,8 +34,8 @@ namespace Dogs.DB
      class PasswordHasher
     {
         const int keySize = 64;
-        const int iterations = 350000;
-        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        const int iterations = 300000;
+        HashAlgorithmName hashAlg = HashAlgorithmName.SHA512;
 
         //Generating Hashed password and getting salt. (For storing later in Databse)
         public string Generate(string password, out byte[] salt)
@@ -46,7 +46,7 @@ namespace Dogs.DB
                 Encoding.UTF8.GetBytes(password), //encodes all the characters in the string into a sequence of bytes
                 salt,
                 iterations,
-                hashAlgorithm,
+                hashAlg,
                 keySize);
 
             return Convert.ToHexString(hash); /*Converts an array of 8-bit unsigned integers 
@@ -57,7 +57,7 @@ namespace Dogs.DB
         /*gets the plain password, checking if password+salt will give back hash.*/
         public bool IsValid(string password, string hash, byte[] salt)
         {
-            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
+            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlg, keySize);
             /*Determines the equality of two byte sequences in an amount of time 
              that depends on the length of the sequences, but not their values.*/
             return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
