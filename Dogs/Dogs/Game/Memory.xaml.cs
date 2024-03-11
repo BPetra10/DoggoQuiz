@@ -152,7 +152,7 @@ namespace Dogs.Game
             }
             else
             {
-                //We can access card1 and card2 in HideCard evenet
+                //We can access card1 and card2 in HideCard event
                 card2 = btn;
                 table.IsHitTestVisible = false;
                 timer.Start(); //This will hide card1 and 2 after 0.5 sec
