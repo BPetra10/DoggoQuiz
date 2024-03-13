@@ -125,8 +125,10 @@ namespace Dogs.Game
         }
 
         int points = 0;
+        bool ansClicked = false;
         private void Btn(object sender, RoutedEventArgs e)
         {
+            answerList = new List<TextBlock>() { ans1, ans2, ans3, ans4 };
             //Disable all the buttons, so the user cannot click over-and-over again to select some answer 
             Btn1.IsHitTestVisible = Btn2.IsHitTestVisible = Btn3.IsHitTestVisible = Btn4.IsHitTestVisible = Help.IsHitTestVisible = false;
 
@@ -152,13 +154,14 @@ namespace Dogs.Game
                 }
                 questionIndex++;
                 DelayQuestion();
+                ansClicked = true;
             }
         }
 
         /*The user will get 3 help, which they can use in questions:
          They can use all the help in only one question, basically skipping that,
          or just use one help in one question. 
-         */
+         */ 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
             if (removeCounter != 0)
@@ -172,41 +175,50 @@ namespace Dogs.Game
                 Viewbox Btn4VB = (Viewbox)Btn4.Content;
                 TextBlock Btn4TB = (TextBlock)Btn4VB.Child;
 
-                for (int i = 0; i < answerList.Count; i++)
+                if (ansClicked == false)
                 {
-                    if (answerList[i].Text == collection[questionIndex].correct)
-                        answerList.RemoveAt(i);
-                }
+                    for (int i = 0; i < answerList.Count; i++)
+                    {
+                        if (answerList[i].Text == collection[questionIndex].correct)
+                        {
+                            answerList.RemoveAt(i);
+                        }
+                    }
 
-                int removeBtn = rnd.Next(0, answerList.Count);
-                
-                if (answerList[removeBtn] == Btn1TB)
-                {
-                    ans1.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn1.IsHitTestVisible = false;
-                    answerList.RemoveAt(removeBtn);
-                    removeCounter--;
+                    int removeBtn = rnd.Next(0, answerList.Count);
+
+                    if (answerList[removeBtn] == Btn1TB)
+                    {
+                        ans1.Foreground = new SolidColorBrush(Colors.DarkRed);
+                        Btn1.IsHitTestVisible = false;
+                        answerList.RemoveAt(removeBtn);
+                        removeCounter--;
+                    }
+                    else if (answerList[removeBtn] == Btn2TB)
+                    {
+                        ans2.Foreground = new SolidColorBrush(Colors.DarkRed);
+                        Btn2.IsHitTestVisible = false;
+                        answerList.RemoveAt(removeBtn);
+                        removeCounter--;
+                    }
+                    else if (answerList[removeBtn] == Btn3TB)
+                    {
+                        ans3.Foreground = new SolidColorBrush(Colors.DarkRed);
+                        Btn3.IsHitTestVisible = false;
+                        answerList.RemoveAt(removeBtn);
+                        removeCounter--;
+                    }
+                    else if (answerList[removeBtn] == Btn4TB)
+                    {
+                        ans4.Foreground = new SolidColorBrush(Colors.DarkRed);
+                        Btn4.IsHitTestVisible = false;
+                        answerList.RemoveAt(removeBtn);
+                        removeCounter--;
+                    }
                 }
-                else if (answerList[removeBtn] == Btn2TB)
-                {
-                    ans2.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn2.IsHitTestVisible = false;
-                    answerList.RemoveAt(removeBtn);
-                    removeCounter--;
-                }
-                else if (answerList[removeBtn] == Btn3TB)
-                {
-                    ans3.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn3.IsHitTestVisible = false;
-                    answerList.RemoveAt(removeBtn);
-                    removeCounter--;
-                }
-                else if (answerList[removeBtn] == Btn4TB)
-                {
-                    ans4.Foreground = new SolidColorBrush(Colors.DarkRed);
-                    Btn4.IsHitTestVisible = false;
-                    answerList.RemoveAt(removeBtn);
-                    removeCounter--;
+                else {
+                    answerList = new List<TextBlock>() { ans1, ans2, ans3, ans4 };
+                    ansClicked = false;
                 }
             }
         }
