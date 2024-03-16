@@ -44,6 +44,7 @@
     <None Remove="Learn\learn_img\rainbow.png" />
     <None Remove="Learn\learn_img\rottweiler.png" />
     <None Remove="Learn\learn_img\vizsla.png" />
+    <None Remove="Login_Register\help.png" />
     <None Remove="Login_Register\paws.jpg" />
     <None Remove="Main\KezdoKep.png" />
     <None Remove="Navigation\Nav.png" />
@@ -81,6 +82,7 @@
     <Resource Include="Game\catch\dogright.png" />
     <Resource Include="Game\catch\park.jpg" />
     <Resource Include="Learn\learn_img\rainbow.png" />
+    <Resource Include="Login_Register\help.png" />
     <Resource Include="MyBtn\bone.png" />
     <Resource Include="Game\memory\agar.jpg" />
     <Resource Include="Game\memory\francia_bulldog.jpg" />

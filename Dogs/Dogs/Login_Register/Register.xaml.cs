@@ -26,42 +26,48 @@ namespace Dogs.Login_Register
         {
             InitializeComponent();
         }
+        void ErrMsgShow(string errText)
+        {
+            textReg.SetValue(Grid.RowSpanProperty, 1);
+            errMsgBox.Visibility = Visibility.Visible;
+            errorMsg.Text = errText;
+        }
 
         readonly Page login = new Login();
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
             if (username.Text.Length == 0){
-                errorMsg.Text = "Nem adtál meg felhasználónevet!";
+                ErrMsgShow("Nem adtál meg felhasználónevet!");
                 username.Focus();
             }
             else if (username.Text.Length!=0){
                 Regex uservalid = new Regex("^[a-záéúőóüöíA-ZÁÉÚŐÓÜÖÍ0-9]{6,12}$");
                 if (!uservalid.IsMatch(username.Text))
                 {
-                    errorMsg.Text = "A felhasználónév legalább 6, max 12 karakter, betűvel kezdődik és számot is tartalmazhat!";
+                    ErrMsgShow("A felhasználónév legalább 6, max 12 karakter, betűvel kezdődik és számot is tartalmazhat!");
                     username.Focus();
                 }
                 else {
                     if (password.Password.Length == 0)
                     {
-                        errorMsg.Text = "Nem adtál meg jelszót!";
+                        ErrMsgShow("Nem adtál meg jelszót!");
                         password.Focus();
                     }
                     else if (password2.Password.Length == 0)
                     {
-                        errorMsg.Text = "Nem adtad meg újra a jelszót!";
+                        ErrMsgShow("Nem adtad meg újra a jelszót!");
                         password2.Focus();
                     }
                     else if (password.Password != password2.Password)
                     {
-                        errorMsg.Text = "A 2 jelszó nem egyezik meg!";
+                        ErrMsgShow("A 2 jelszó nem egyezik meg!");
                     }
                     else
                     {
                         Regex pwdvalid = new Regex("^(?=.*?[A-ZÁÉÚŐÓÜÖÍ])(?=.*?[a-záéúőóüöí])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$");
                         if (!pwdvalid.IsMatch(password.Password))
                         {
-                            errorMsg.Text = "A jelszó legalább 8, de max 16 karakteres, kis és nagybetűt, számot, speciális karaktert tartalmazó!";
+                            ErrMsgShow("A jelszó legalább 8, de max 16 karakteres, kis és nagybetűt, számot, speciális karaktert tartalmazó!");
                             password.Focus();
                         }
                         else
@@ -79,7 +85,7 @@ namespace Dogs.Login_Register
                             }
                             else
                             {
-                                errorMsg.Text = "Ez a felhasználó már létezik!";
+                                ErrMsgShow("Ez a felhasználó már létezik!");
                             }
                         }
                     }
@@ -92,19 +98,29 @@ namespace Dogs.Login_Register
             Application.Current.MainWindow.Content = login;
         }
 
-        private void errorMsg_MouseEnter(object sender, MouseEventArgs e)
-        {
-            help.Visibility = Visibility.Visible;
-        }
-
-        private void errorMsg_MouseLeave(object sender, MouseEventArgs e)
-        {
-            help.Visibility = Visibility.Hidden;
-        }
-
         private void BackToMain_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Content = ((MainWindow)Application.Current.MainWindow).Main;
+        }
+
+        private void userFillIn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            userhelp.Visibility = Visibility.Visible;
+        }
+
+        private void userFillIn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            userhelp.Visibility = Visibility.Hidden;
+        }
+
+        private void passFillIn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            passhelp.Visibility = Visibility.Visible;
+        }
+
+        private void passFillIn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            passhelp.Visibility = Visibility.Hidden;
         }
     }
 }

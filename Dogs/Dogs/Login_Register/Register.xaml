@@ -24,31 +24,38 @@
 		<Grid.Background>
 			<ImageBrush ImageSource="paws.jpg" Stretch="UniformToFill"/>
 		</Grid.Background>
-		<Viewbox Grid.Column="1" x:Name="reg">
+		<Viewbox Grid.Column="1" x:Name="textReg" Grid.RowSpan="2">
 			<TextBlock>Regisztráció</TextBlock>
 		</Viewbox>
-		<Viewbox Grid.Row="1" Grid.ColumnSpan="3">
-			<TextBlock x:Name="errorMsg" Foreground="Red" Background="White" Margin="0,3,0,3" MouseEnter="errorMsg_MouseEnter" MouseLeave="errorMsg_MouseLeave">A megfelelő kitöltés szabályainak megismeréséhez mutass ide.</TextBlock>
+		<Viewbox Grid.Row="1" Grid.ColumnSpan="3" x:Name="errMsgBox" Visibility="Collapsed">
+			<TextBlock x:Name="errorMsg" Foreground="Red" Background="White" Margin="0,3,0,3"></TextBlock>
 		</Viewbox>
 		<Viewbox Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Margin="5,0,5,0">
-			<Border BorderThickness="1" BorderBrush="Black" Background="White" x:Name="help"  Visibility="Hidden" CornerRadius="10">
+			<Border BorderThickness="1" BorderBrush="Black" Background="White" x:Name="userhelp"  Visibility="Hidden" CornerRadius="10">
 				<TextBlock Padding="10">
-					-Minden mező megadása kötelező.<LineBreak/>
 					A Felhasználónév:<LineBreak/>
 						-min. 6 max. 12 karakter.<LineBreak/>
 						-betűvel kezdődik, számot tartalmazhat.<LineBreak/>
-					A Jelszó:<LineBreak/>
-						-min. 8, max. 16 karakter.<LineBreak/>
-						-kis és nagybetűt, speciális karaktert tartalmaz.<LineBreak/>
-						-A 2 jelszónak meg kell egyeznie.
 				</TextBlock>
 			</Border>
 		</Viewbox>
+		<Viewbox Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0">
+			<Border BorderThickness="1" BorderBrush="Black" Background="White" x:Name="passhelp"  Visibility="Hidden" CornerRadius="10">
+				<TextBlock Padding="10">
+				A Jelszó:<LineBreak/>
+					-min. 8, max. 16 karakter.<LineBreak/>
+					-kis és nagybetűt, speciális karaktert tartalmaz.<LineBreak/>
+					-A 2 jelszónak meg kell egyeznie.
+				</TextBlock>
+			</Border>
+		</Viewbox>
+
 		<Grid Background="Bisque" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
 			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100*"/>
 				<ColumnDefinition Width="30*"/>
-				<ColumnDefinition Width="40*"/>
-				<ColumnDefinition Width="30*"/>
+				<ColumnDefinition Width="108*"/>
+				<ColumnDefinition Width="88*"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="80*"/>
@@ -56,19 +63,25 @@
 				<RowDefinition Height="80*"/>
 				<RowDefinition Height="115*"/>
 			</Grid.RowDefinitions>
-			<Viewbox>
+			<Viewbox Margin="0,0,5,0">
 				<Label>Felhasználónév:</Label>
 			</Viewbox>
-			<TextBox x:Name="username" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="12"></TextBox>
-			<Viewbox Grid.Row="1">
+			<Viewbox Grid.Column="1">
+				<Image x:Name="userFillIn" Source="help.png" Stretch="Fill" MouseEnter="userFillIn_MouseEnter" MouseLeave="userFillIn_MouseLeave"/>
+			</Viewbox>
+			<TextBox x:Name="username" Grid.Column="2" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="12"></TextBox>
+			<Viewbox Grid.Row="1" Margin="0,0,5,0">
 				<Label Padding="20">Jelszó:</Label>
 			</Viewbox>
-			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="16"></PasswordBox>
-			<Viewbox Grid.Row="2">
+			<Viewbox Grid.Column="1" Grid.Row="1">
+				<Image x:Name="passFillIn" Source="help.png" Stretch="Fill" MouseEnter="passFillIn_MouseEnter" MouseLeave="passFillIn_MouseLeave"/>
+			</Viewbox>
+			<PasswordBox x:Name="password" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="16"></PasswordBox>
+			<Viewbox Grid.Row="2" Margin="0,0,5,0">
 				<Label Padding="10">Jelszó újra:</Label>
 			</Viewbox>
-			<PasswordBox x:Name="password2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="16"></PasswordBox>
-			<Button x:Name="SignUp" Grid.Row="3" Grid.ColumnSpan="3" Background="{x:Null}" BorderThickness="0" Margin="65,0,65,0" Click="SignUp_Click">
+			<PasswordBox x:Name="password2" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" MaxHeight="40" MinHeight="30" FontSize="30" Margin="10,0,20,0" MaxLength="16"></PasswordBox>
+			<Button x:Name="SignUp" Grid.Row="3" Grid.ColumnSpan="4" Background="{x:Null}" BorderThickness="0" Margin="65,0,65,0" Click="SignUp_Click">
 				<uc:BoneButton TextVal="Regisztrálás"/>
 			</Button>
 		</Grid>
