@@ -216,10 +216,15 @@ namespace Dogs.Game
                         removeCounter--;
                     }
                 }
-                else {
+                else
+                {
                     answerList = new List<TextBlock>() { ans1, ans2, ans3, ans4 };
                     ansClicked = false;
                 }
+            }
+            else {
+                MessageBox.Show("Elfogytak a segítségek!");
+                Help.IsHitTestVisible = false;
             }
         }
 
