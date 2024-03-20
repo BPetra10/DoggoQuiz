@@ -54,7 +54,6 @@ namespace Dogs.DB
                     }
                 }
                 reader.Close();
-                connection.Close();
             }
             catch (Exception e)
             {
@@ -78,7 +77,6 @@ namespace Dogs.DB
             try
             {
                 query.ExecuteNonQuery();
-                connection.Close();
             }
             catch (Exception e)
             {
@@ -196,7 +194,6 @@ namespace Dogs.DB
                     }
                 }
                 reader.Close();
-                connection.Close();
             }
             catch (Exception e)
             {
@@ -278,7 +275,6 @@ namespace Dogs.DB
                 try
                 {
                     query.ExecuteNonQuery();
-                    connection.Close();
                 }
                 catch (Exception e)
                 {
@@ -298,7 +294,6 @@ namespace Dogs.DB
                 try
                 {
                     query.ExecuteNonQuery();
-                    connection.Close();
                 }
                 catch (Exception e)
                 {
@@ -331,7 +326,6 @@ namespace Dogs.DB
                     }
                 }
                 reader.Close();
-                connection.Close();
             }
             catch (Exception e)
             {
@@ -353,7 +347,6 @@ namespace Dogs.DB
                 try
                 {
                     query.ExecuteNonQuery();
-                    connection.Close();
                 }
                 catch (Exception e)
                 {
@@ -386,7 +379,6 @@ namespace Dogs.DB
                     }
                 }
                 reader.Close();
-                connection.Close();
             }
             catch (Exception e)
             {
