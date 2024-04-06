@@ -80,7 +80,7 @@ namespace Dogs.Learn
 
         private void ErdelyiKopo_Click(object sender, RoutedEventArgs e)
         {
-            ToNotePage("erdelyi kopó");
+            ToNotePage("erdélyi kopó");
         }
 
         private void Mudi_Click(object sender, RoutedEventArgs e)
